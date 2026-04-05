@@ -1,0 +1,31 @@
+prompt:
+  type: ???
+
+dataset:
+  type: ???
+  name: ???
+
+model:
+  name: ???
+
+decoding:
+  type: ???
+
+generation:
+  explanation:
+    gd:
+      generation_args:
+        do_sample: false
+        max_new_tokens: 512
+        temperature: null
+        top_k: null
+        top_p: null
+    sc:
+      generation_args:
+        do_sample: true
+        max_new_tokens: 512
+        temperature: 1.0
+        top_k: null
+        top_p: null
+        num_return_sequences: 20
+      voting_strategy: random

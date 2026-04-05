@@ -1,0 +1,63 @@
+Task:
+You will be given a sentence. Your task is to edit the sentence by inserting a random adjective before a noun or a random adverb before a verb. The noun or verb must be selected randomly from the given sentence.
+
+
+Requirements:
+- Generate 20 different edtis.
+- Each edit should modify only one word.
+- Enclose only the modified word in square brackets [ ].
+- Ensure that the sentence remains grammatically correct and natural.
+
+
+Output format:
+1. [Edited Sentence]
+2. [Edited Sentence]
+3. [Edited Sentence]
+4. [Edited Sentence]
+5. [Edited Sentence]
+6. [Edited Sentence]
+7. [Edited Sentence]
+8. [Edited Sentence]
+9. [Edited Sentence]
+10. [Edited Sentence]
+11. [Edited Sentence]
+12. [Edited Sentence]
+13. [Edited Sentence]
+14. [Edited Sentence]
+15. [Edited Sentence]
+16. [Edited Sentence]
+17. [Edited Sentence]
+18. [Edited Sentence]
+19. [Edited Sentence]
+20. [Edited Sentence]
+
+
+Sentence:
+The quick brown fox jumps over the lazy dog.
+Output:
+1. The quick brown fox [gracefully] jumps over the lazy dog.
+2. The [cheerful] quick brown fox jumps over the lazy dog.
+3. The quick brown fox [eagerly] jumps over the lazy dog.
+4. The quick brown [agile] fox jumps over the lazy dog.
+5. The quick brown fox jumps [swiftly] over the lazy dog.
+6. The quick [sly] brown fox jumps over the lazy dog.
+7. The quick brown fox [clumsily] jumps over the lazy dog.
+8. The [mischievous] quick brown fox jumps over the lazy dog.
+9. The quick brown fox jumps [carefully] over the lazy dog.
+10. The quick [quiet] brown fox jumps over the lazy dog.
+11. The quick brown fox jumps [joyfully] over the lazy dog.
+12. The quick brown fox jumps over the [drowsy] dog.
+13. The quick brown fox [boldly] jumps over the lazy dog.
+14. The quick brown fox jumps over the [adorable] dog.
+15. The quick brown fox [happily] jumps over the lazy dog.
+16. The quick [playful] brown fox jumps over the lazy dog.
+17. The quick brown fox jumps [silently] over the lazy dog.
+18. The quick [energetic] brown fox jumps over the lazy dog.
+19. The quick brown fox jumps [gently] over the lazy dog.
+20. The quick brown [cunning] fox jumps over the lazy dog.
+
+
+###
+
+
+Sentence:

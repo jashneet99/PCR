@@ -1,0 +1,3 @@
+Model,Dataset,Stage,Faith,Unfaith,Faith Rate,Unfaith Rate,Total
+qwen,comve,SR-NLE baseline (de_original),66,169,0.2809,0.7191,235
+qwen,comve,PCR Phase 1 (de_final),126,109,0.5362,0.4638,235

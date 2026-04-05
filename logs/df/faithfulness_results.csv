@@ -1,0 +1,5 @@
+Dataset,Model,Stage,Iter,Type,Total,Valid,Faith,Unfaith,Faith Rate,Unfaith Rate,Lengths
+comve,qwen,init,-,gd,235,235,66,169,0.2809,0.7191,24.217
+comve,qwen,refined,0,nl,235,235,78,157,0.3319,0.6681,33.1404
+comve,qwen,refined,1,nl,235,235,85,150,0.3617,0.6383,39.0936
+comve,qwen,refined,2,nl,235,235,86,149,0.366,0.634,42.9064
