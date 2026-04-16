@@ -1,0 +1,7 @@
+Stage,Total,Faithful,Faith Rate,Converged,Avg Iters
+SR-NLE Init,235,66,0.2809,-,-
+SR-NLE Iter 0,235,78,0.3319,-,-
+SR-NLE Iter 1,235,85,0.3617,-,-
+SR-NLE Iter 2,235,86,0.366,-,-
+PCR Phase 1,235,126,0.5362,135/235,1.47
+PCR Phase 2,235,154,0.6553,0/235,4.0

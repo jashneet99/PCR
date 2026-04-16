@@ -1,0 +1,7 @@
+Stage,Qwen Faithful,Qwen Faith Rate,Qwen Converged,Falcon Faithful,Falcon Faith Rate,Falcon Converged
+SR-NLE Init,66,0.2809,-,66,0.3708,-
+SR-NLE Iter 0,78,0.3319,-,68,0.382,-
+SR-NLE Iter 1,85,0.3617,-,66,0.3708,-
+SR-NLE Iter 2,86,0.366,-,75,0.4213,-
+PCR Phase 1,126,0.5362,135/235,69,0.3876,166/178
+PCR Phase 2,154,0.6553,0/235,93,0.5225,0/178

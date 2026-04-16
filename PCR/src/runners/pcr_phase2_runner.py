@@ -237,25 +237,39 @@ def main():
     # Load model
     model = GenerationModel(args.model_name)
 
-    # Run PCR Phase 2
+    # Resume from existing output if available
     results = []
+    if os.path.exists(output_path):
+        with open(output_path, "r", encoding="utf-8") as f:
+            results = json.load(f)
+        print(f"Resuming from {len(results)} already processed items")
+        data = data[len(results):]
+
+    # Run PCR Phase 2
     for item in tqdm(data, desc="PCR Phase 2"):
+        # Skip items with no valid explanation
+        if item.get("explanation") is None or item["explanation"].get("final") is None:
+            item["pcr_phase2"] = None
+            results.append(item)
+            with open(output_path, "w", encoding="utf-8") as f:
+                json.dump(results, f, indent=2, ensure_ascii=False)
+            continue
         item = pcr_phase2(item, model, max_iters=args.max_iters, tau=args.tau)
         results.append(item)
-
-    # Save
-    with open(output_path, "w", encoding="utf-8") as f:
-        json.dump(results, f, indent=2, ensure_ascii=False)
+        # Save incrementally after each item
+        with open(output_path, "w", encoding="utf-8") as f:
+            json.dump(results, f, indent=2, ensure_ascii=False)
 
     print(f"\nSaved {len(results)} items to {output_path}")
 
     # Quick stats
-    converged     = sum(1 for r in results if r["pcr_phase2"]["converged"])
-    avg_iters     = sum(r["pcr_phase2"]["iterations"] for r in results) / len(results)
-    avg_delta_t   = sum(r["pcr_phase2"]["final_delta_t"] for r in results) / len(results)
-    avg_delta_pt  = sum(r["pcr_phase2"]["final_delta_prime_t"] for r in results) / len(results)
+    valid_results = [r for r in results if r["pcr_phase2"] is not None]
+    converged     = sum(1 for r in valid_results if r["pcr_phase2"]["converged"])
+    avg_iters     = sum(r["pcr_phase2"]["iterations"] for r in valid_results) / len(valid_results) if valid_results else 0
+    avg_delta_t   = sum(r["pcr_phase2"]["final_delta_t"] for r in valid_results) / len(valid_results) if valid_results else 0
+    avg_delta_pt  = sum(r["pcr_phase2"]["final_delta_prime_t"] for r in valid_results) / len(valid_results) if valid_results else 0
 
-    print(f"Converged (both margins >= {args.tau}): {converged}/{len(results)}")
+    print(f"Converged (both margins >= {args.tau}): {converged}/{len(valid_results)} (skipped {len(results) - len(valid_results)} None items)")
     print(f"Average iterations    : {avg_iters:.2f}")
     print(f"Average final Δt      : {avg_delta_t:.4f}")
     print(f"Average final Δ't     : {avg_delta_pt:.4f}")

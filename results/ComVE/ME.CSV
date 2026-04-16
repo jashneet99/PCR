@@ -1,0 +1,38 @@
+=== QWEN ===
+        Stage  Total  Faithful  Faith Rate Converged Avg Iters
+  SR-NLE Init    235        66      0.2809         -         -
+SR-NLE Iter 0    235        78      0.3319         -         -
+SR-NLE Iter 1    235        85      0.3617         -         -
+SR-NLE Iter 2    235        86      0.3660         -         -
+  PCR Phase 1    235       126      0.5362   135/235      1.47
+  PCR Phase 2    235       154      0.6553     0/235       4.0
+
+=== FALCON ===
+        Stage  Total  Faithful  Faith Rate Converged Avg Iters
+  SR-NLE Init    178        66      0.3708         -         -
+SR-NLE Iter 0    178        68      0.3820         -         -
+SR-NLE Iter 1    178        66      0.3708         -         -
+SR-NLE Iter 2    178        75      0.4213         -         -
+  PCR Phase 1    178        69      0.3876   166/178      0.49
+  PCR Phase 2    178        93      0.5225     0/178       5.0
+
+=== MISTRAL ===
+        Stage  Total  Faithful  Faith Rate Converged Avg Iters
+  SR-NLE Init    476       136      0.2857         -         -
+SR-NLE Iter 0    476       164      0.3445         -         -
+SR-NLE Iter 1    476       178      0.3739         -         -
+SR-NLE Iter 2    476       177      0.3718         -         -
+  PCR Phase 1    476       199      0.4181   183/476      1.93
+  PCR Phase 2    476         -           -         -         -
+
+Note: Mistral total = 476 (489 counter items minus 13 with no valid explanation — same 13 discarded from all stages for apple-to-apple comparison)
+PCR Phase 2 running — results pending
+
+=== COMPARISON TABLE ===
+        Stage  Qwen Faithful  Qwen Faith Rate Qwen Converged  Falcon Faithful  Falcon Faith Rate Falcon Converged  Mistral Faithful  Mistral Faith Rate Mistral Converged
+  SR-NLE Init             66           0.2809              -               66             0.3708                -               136             0.2857                 -
+SR-NLE Iter 0             78           0.3319              -               68             0.3820                -               164             0.3445                 -
+SR-NLE Iter 1             85           0.3617              -               66             0.3708                -               178             0.3739                 -
+SR-NLE Iter 2             86           0.3660              -               75             0.4213                -               177             0.3718                 -
+  PCR Phase 1            126           0.5362        135/235               69             0.3876          166/178               199             0.4181           183/476
+  PCR Phase 2            154           0.6553          0/235               93             0.5225            0/178                 -                  -                 -

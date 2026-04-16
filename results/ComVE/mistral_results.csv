@@ -1,0 +1,8 @@
+Stage,Total,Faithful,Faith Rate,Converged,Avg Iters
+SR-NLE Init,476,136,0.2857,-,-
+SR-NLE Iter 0,476,164,0.3445,-,-
+SR-NLE Iter 1,476,178,0.3739,-,-
+SR-NLE Iter 2,476,177,0.3718,-,-
+PCR Phase 1,476,199,0.4181,183/476,1.93
+PCR Phase 2,476,-,-,-,-
+Note: 13 items discarded from all stages (no valid SR-NLE explanation) for apple-to-apple comparison
