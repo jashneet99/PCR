@@ -1,6 +1,6 @@
 import re
 import random
-from typing import Dict, List, Tuple
+from typing import Dict, List, Tuple, Any
 from omegaconf import DictConfig
 from modules.generator.generator import GeneralGenerator
 from modules.utils import get_prompt_template
@@ -83,3 +83,29 @@ class RefinementGenerator:
             return self.generator(item)
         else:
             raise ValueError(f"Unsupported feedback type: {self.feedback_type}")
+
+    def _should_skip(self, item: Dict) -> bool:
+        if self.feedback_type == 'nl':
+            return item['nl_feedback'] is None or item['nl_feedback']['final'] is None
+        elif self.feedback_type == 'iw':
+            return (item['explanation'] is None or item['explanation']['final'] is None
+                    or item['iw_feedback'] is None or item['iw_feedback']['final'] is None)
+        elif self.feedback_type == 'aiw_ig':
+            return item['explanation'] is None or item['explanation']['final'] is None or item['aiw_ig_feedback'] is None
+        elif self.feedback_type == 'aiw_attn':
+            return item['explanation'] is None or item['explanation']['final'] is None or item['aiw_attn_feedback'] is None
+        elif self.feedback_type == 'iw_rand':
+            return item['explanation'] is None or item['explanation']['final'] is None or item['iw_rand_feedback'] is None
+        else:
+            raise ValueError(f"Unsupported feedback type: {self.feedback_type}")
+
+    def batch_call(self, items: List[Dict]) -> List[Dict]:
+        valid_items = []
+        for item in items:
+            if self._should_skip(item):
+                item[self.stage] = None
+            else:
+                valid_items.append(item)
+        if valid_items:
+            self.generator.batch_call(valid_items)
+        return items

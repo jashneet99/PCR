@@ -1,7 +1,7 @@
 import re
 import random
 from collections import Counter
-from typing import Dict, List, Optional, Tuple
+from typing import Dict, List, Optional, Tuple, Any
 from omegaconf import DictConfig
 from model.model import GenerationModel
 from modules.generator.generator import GeneralGenerator
@@ -61,3 +61,6 @@ class AnswerGenerator:
             item: Dict
     ) -> Dict:
         return self.generator(item=item)
+
+    def batch_call(self, items: List[Dict]) -> List[Dict]:
+        return self.generator.batch_call(items)

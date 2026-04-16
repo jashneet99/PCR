@@ -2,7 +2,6 @@ import os
 import sys
 import json
 from pathlib import Path
-from tqdm import tqdm
 
 sys.path.append(str(Path(__file__).parent.parent))
 
@@ -41,10 +40,7 @@ def main(base):
         data = json.load(f)
         
     # === Generation ===
-    results = []
-    for item in tqdm(data, desc="Generating explanation"):
-        item = generator(item)
-        results.append(item)
+    results = generator.batch_call(data)
         
     # === Saving ===
     with open(output_path, "w", encoding="utf-8") as f:

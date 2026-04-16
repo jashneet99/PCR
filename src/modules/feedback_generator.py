@@ -131,3 +131,21 @@ class FeedbackGenerator:
             item[self.stage] = None
             return item
         return self.generator(item)
+
+    def batch_call(self, items: List[Dict]) -> List[Dict]:
+        # Attribution-based feedback types (aiw_ig, aiw_attn) require HF model
+        # gradients and are not compatible with vLLM — fall back to per-item.
+        if self.feedback_type in ['aiw_ig', 'aiw_attn', 'iw_rand']:
+            for item in items:
+                self(item)
+            return items
+
+        valid_items = []
+        for item in items:
+            if item['explanation'] is None or item['explanation']['final'] is None:
+                item[self.stage] = None
+            else:
+                valid_items.append(item)
+        if valid_items:
+            self.generator.batch_call(valid_items)
+        return items

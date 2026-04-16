@@ -71,3 +71,14 @@ class ExplanationGenerator:
             item[self.stage] = None
             return item
         return self.generator(item=item)
+
+    def batch_call(self, items: List[Dict]) -> List[Dict]:
+        valid_items = []
+        for item in items:
+            if item["answer"]["final"] is None:
+                item[self.stage] = None
+            else:
+                valid_items.append(item)
+        if valid_items:
+            self.generator.batch_call(valid_items)
+        return items

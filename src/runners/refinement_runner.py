@@ -2,7 +2,6 @@ import os
 import sys
 import json
 from pathlib import Path
-from tqdm import tqdm
 
 sys.path.append(str(Path(__file__).parent.parent))
 
@@ -39,10 +38,7 @@ def main(base):
     # === Generation ===
     model = GenerationModel(model_name)
     generator = RefinementGenerator(config, model)
-    results = []
-    for item in tqdm(data, desc="Generating refinement"):
-        item = generator(item)
-        results.append(item)
+    results = generator.batch_call(data)
                 
     # === Saving ===
     with open(output_path, "w", encoding="utf-8") as f:
