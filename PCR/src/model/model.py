@@ -1,6 +1,8 @@
-import torch
-import torch.nn.functional as F
-from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
+import os
+os.environ.setdefault("CUDA_VISIBLE_DEVICES", "0")
+
+import math
+from vllm import LLM, SamplingParams
 
 LLM_MODELS = {
     "llama":   "meta-llama/Llama-3.1-8B-Instruct",
@@ -12,79 +14,83 @@ LLM_MODELS = {
 
 class GenerationModel:
     """
-    Extended version of SR-NLE's GenerationModel.
+    Extended version of SR-NLE's GenerationModel — vLLM backend.
     Adds get_margin() for PCR's probabilistic faithfulness check.
 
     New method:
         get_margin(explanation, y, y_prime)
             → feeds explanation ALONE to the model (no original input x)
-            → extracts logits for y and y_prime answer tokens
-            → applies softmax → returns Δt = P(y|e) - P(y'|e)
+            → extracts logprobs for y and y_prime answer tokens
+            → applies binary softmax → returns Δt = P(y|e) - P(y'|e)
     """
 
     def __init__(self, model_name):
         self.model_id = LLM_MODELS[model_name]
-
-        quantization_config = BitsAndBytesConfig(load_in_8bit=True)
-
-        self.model = AutoModelForCausalLM.from_pretrained(
-            self.model_id,
-            quantization_config=quantization_config,
-            device_map="auto"
-        )
-        self.model.eval()
-        self.tokenizer = AutoTokenizer.from_pretrained(self.model_id)
-        self.device = next(self.model.parameters()).device
         self.system_prompt = "You are a helpful assistant!"
 
+        self.llm = LLM(
+            model=self.model_id,
+            dtype="bfloat16",
+            gpu_memory_utilization=0.85,
+            tensor_parallel_size=1,
+        )
+        self.tokenizer = self.llm.get_tokenizer()
+
     # ------------------------------------------------------------------ #
-    #  Original SR-NLE methods (unchanged)                                #
+    #  Core helpers                                                        #
     # ------------------------------------------------------------------ #
 
     def set_system_prompt(self, prompt):
         self.system_prompt = prompt
 
     def get_chat_prompt(self, prompt):
-        messages = [
+        return [
             {"role": "system", "content": self.system_prompt},
             {"role": "user",   "content": prompt},
         ]
-        return messages
 
     def get_formatted_prompt(self, prompt):
         chat_prompt = self.get_chat_prompt(prompt)
-        formatted_prompt = self.tokenizer.apply_chat_template(
+        return self.tokenizer.apply_chat_template(
             chat_prompt,
             tokenize=False,
             add_generation_prompt=True
         )
-        return formatted_prompt
 
-    def get_inputs(self, prompt):
-        formatted_prompt = self.get_formatted_prompt(prompt)
-        inputs = self.tokenizer(
-            formatted_prompt,
-            return_tensors="pt",
-            add_special_tokens=False
-        ).to(self.device)
-        return inputs
+    def _make_sampling_params(self, **generation_args):
+        do_sample  = generation_args.get("do_sample", False)
+        max_tokens = generation_args.get("max_new_tokens", 512)
+        n          = generation_args.get("num_return_sequences", 1)
+
+        if not do_sample:
+            temperature, top_p, top_k = 0.0, 1.0, -1
+        else:
+            temperature = generation_args.get("temperature") or 1.0
+            top_p       = generation_args.get("top_p") or 1.0
+            top_k       = generation_args.get("top_k") or -1
+
+        return SamplingParams(
+            temperature=temperature,
+            top_p=top_p,
+            top_k=top_k,
+            max_tokens=max_tokens,
+            n=n,
+        )
+
+    # ------------------------------------------------------------------ #
+    #  SR-NLE generation methods                                           #
+    # ------------------------------------------------------------------ #
+
+    def get_generated_batch(self, prompts, **generation_args):
+        """Generate outputs for a list of prompts in one batched vLLM call."""
+        sampling_params   = self._make_sampling_params(**generation_args)
+        formatted_prompts = [self.get_formatted_prompt(p) for p in prompts]
+        outputs           = self.llm.generate(formatted_prompts, sampling_params)
+        return [[completion.text for completion in req.outputs] for req in outputs]
 
     def get_generated(self, prompt, **generation_args):
-        inputs = self.get_inputs(prompt)
-        with torch.no_grad():
-            outputs = self.model.generate(
-                **inputs,
-                pad_token_id=self.tokenizer.eos_token_id,
-                **generation_args
-            )
-        decoded_outputs = [
-            self.tokenizer.decode(
-                output[inputs['input_ids'].size(1):],
-                skip_special_tokens=True
-            )
-            for output in outputs
-        ]
-        return decoded_outputs
+        """Generate outputs for a single prompt."""
+        return self.get_generated_batch([prompt], **generation_args)[0]
 
     def get_messages_generated(self, messages, **generation_args):
         """
@@ -96,31 +102,12 @@ class GenerationModel:
             tokenize=False,
             add_generation_prompt=True
         )
-        inputs = self.tokenizer(
-            formatted_prompt,
-            return_tensors="pt",
-            add_special_tokens=False
-        ).to(self.device)
-        with torch.no_grad():
-            outputs = self.model.generate(
-                **inputs,
-                pad_token_id=self.tokenizer.eos_token_id,
-                **generation_args
-            )
-        decoded = self.tokenizer.decode(
-            outputs[0][inputs['input_ids'].size(1):],
-            skip_special_tokens=True
-        )
-        return decoded.strip()
-
-    def set_eval_mode(self):
-        self.model.eval()
-
-    def set_train_mode(self):
-        self.model.train()
+        sampling_params = self._make_sampling_params(**generation_args)
+        outputs         = self.llm.generate([formatted_prompt], sampling_params)
+        return outputs[0].outputs[0].text.strip()
 
     # ------------------------------------------------------------------ #
-    #  PCR Extension — get_margin()                                       #
+    #  PCR Extension — get_margin()                                        #
     # ------------------------------------------------------------------ #
 
     def get_answer_token_id(self, answer_label: str) -> int:
@@ -128,10 +115,10 @@ class GenerationModel:
         Returns the first token ID of the answer label string.
         e.g. "A" → token_id for "A"
              "Sentence 0" → token_id for "Sentence"
-        Used to extract logits at the answer position.
+        Used to extract logprobs at the answer position.
         """
         tokens = self.tokenizer.encode(
-            " " + answer_label,   # space prefix handles BPE tokenisation
+            " " + answer_label,
             add_special_tokens=False
         )
         return tokens[0]
@@ -147,7 +134,7 @@ class GenerationModel:
 
         Interpretation:
             Δt = +1.0  → explanation perfectly predicts y  (fully faithful)
-            Δt =  0.0  → explanation is ambiguous (confused between y and y')
+            Δt =  0.0  → explanation is ambiguous
             Δt = -1.0  → explanation pushes towards wrong prediction
 
         Args:
@@ -158,42 +145,37 @@ class GenerationModel:
         Returns:
             Δt (float) in range [-1, +1]
         """
-        # Step 1 — Build prompt with ONLY the explanation (original x is hidden)
+        # Step 1 — Build prompt with ONLY the explanation
         prompt = (
             f"Based only on the following explanation, predict the answer.\n\n"
             f"Explanation: {explanation}\n\n"
             f"Answer (choose one):"
         )
 
-        # Step 2 — Tokenise and get model logits
-        inputs = self.tokenizer(
-            prompt,
-            return_tensors="pt",
-            add_special_tokens=False
-        ).to(self.device)
+        # Step 2 — Get logprobs for the first generated token
+        # logprobs=500 ensures y and y_prime tokens are captured
+        sampling_params = SamplingParams(
+            temperature=0.0,
+            max_tokens=1,
+            logprobs=500,
+        )
+        output = self.llm.generate([prompt], sampling_params)[0]
 
-        with torch.no_grad():
-            output = self.model(**inputs)
-            # logits shape: [1, seq_len, vocab_size]
-            # We want the logits at the LAST position (where answer token goes)
-            last_logits = output.logits[0, -1, :]  # [vocab_size]
+        # logprobs[0] = dict of {token_id: Logprob} for the first generated token
+        logprobs_dict = output.outputs[0].logprobs[0]
 
-        # Step 3 — Extract logits for y and y' answer tokens
+        # Step 3 — Extract log probabilities for y and y_prime tokens
         y_token_id       = self.get_answer_token_id(y)
         y_prime_token_id = self.get_answer_token_id(y_prime)
 
-        y_logit       = last_logits[y_token_id].item()
-        y_prime_logit = last_logits[y_prime_token_id].item()
+        NEG_INF     = -1e9   # fallback if token not in top-500
+        log_y       = logprobs_dict[y_token_id].logprob       if y_token_id       in logprobs_dict else NEG_INF
+        log_y_prime = logprobs_dict[y_prime_token_id].logprob if y_prime_token_id in logprobs_dict else NEG_INF
 
-        # Step 4 — Apply softmax over just these two logits
-        # (binary softmax = sigmoid equivalent for 2-class case)
-        logits_pair = torch.tensor([y_logit, y_prime_logit])
-        probs = F.softmax(logits_pair, dim=0)
-
-        p_y       = probs[0].item()   # P(y | explanation)
-        p_y_prime = probs[1].item()   # P(y' | explanation)
+        # Step 4 — Binary softmax over log probabilities
+        log_sum   = math.log(math.exp(log_y) + math.exp(log_y_prime))
+        p_y       = math.exp(log_y       - log_sum)
+        p_y_prime = math.exp(log_y_prime - log_sum)
 
         # Step 5 — Compute margin Δt
-        delta_t = p_y - p_y_prime
-
-        return delta_t
+        return p_y - p_y_prime

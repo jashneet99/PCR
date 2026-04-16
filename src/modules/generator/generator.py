@@ -1,4 +1,5 @@
 from typing import Dict, List, Optional, Callable, Any
+from tqdm import tqdm
 
 from model.model import GenerationModel
 from modules.utils import fill_prompt_template
@@ -28,7 +29,7 @@ class GeneralGenerator:
         self.self_consistency = self_consistency
         self.voting_strategy = voting_strategy
         self.voting_fn = voting_fn
-        
+
         if self.self_consistency:
             if not generation_args.get("do_sample", False):
                 raise ValueError("Self-consistency decoding requires 'do_sample=True'")
@@ -38,25 +39,18 @@ class GeneralGenerator:
                 raise ValueError("Voting strategy must be specified for self-consistency.")
             if voting_fn is None:
                 raise ValueError("Voting function must be specified for self-consistency.")
-            
-    def __call__(
-            self,
-            item: Dict
-    ):
-        prompt = fill_prompt_template(stage=self.stage, prompt=self.prompt_template, item=item, top_k=self.top_k)
-        
-        outputs = self.model.get_generated(prompt, **self.generation_args)
-        
+
+    def _process_outputs(self, item: Dict, prompt: str, outputs: List[str]) -> Dict:
         parsed = []
         valid_indices = []
         selected_indices = []
-        
+
         for i, o in enumerate(outputs):
             p = self.parse_fn(o)
             if p is not None and (not self.answer_validator or self.answer_validator(p)):
                 parsed.append(p)
                 valid_indices.append(i)
-                
+
         if not parsed:
             final = None
         else:
@@ -64,7 +58,7 @@ class GeneralGenerator:
                 final, selected_indices = self.voting_fn(parsed, self.voting_strategy)
             else:
                 final, selected_indices = parsed[0], []
-                
+
         item[self.stage] = {
             'prompt': prompt,
             'outputs': outputs,
@@ -74,3 +68,21 @@ class GeneralGenerator:
             'final': final
         }
         return item
+
+    def __call__(self, item: Dict) -> Dict:
+        prompt = fill_prompt_template(stage=self.stage, prompt=self.prompt_template, item=item, top_k=self.top_k)
+        outputs = self.model.get_generated(prompt, **self.generation_args)
+        return self._process_outputs(item, prompt, outputs)
+
+    def batch_call(self, items: List[Dict]) -> List[Dict]:
+        """Generate for all items in one batched vLLM call."""
+        prompts = [
+            fill_prompt_template(stage=self.stage, prompt=self.prompt_template, item=item, top_k=self.top_k)
+            for item in tqdm(items, desc=f"[{self.stage}] Preparing prompts")
+        ]
+        print(f"[{self.stage}] Sending {len(prompts)} prompts to vLLM...")
+        all_outputs = self.model.get_generated_batch(prompts, **self.generation_args)
+        print(f"[{self.stage}] Generation done. Processing outputs...")
+        for item, prompt, outputs in tqdm(zip(items, prompts, all_outputs), total=len(items), desc=f"[{self.stage}] Processing outputs"):
+            self._process_outputs(item, prompt, outputs)
+        return items
