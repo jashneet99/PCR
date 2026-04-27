@@ -44,11 +44,28 @@ from tqdm import tqdm
 sys.path.append(str(Path(__file__).parent.parent))
 
 from model.model import GenerationModel
-from prompts.comve_prompts import (
-    get_ce_generation_prompt,
-    get_critique_prompt_phase2,
-    get_ce_refinement_prompt,
-)
+
+
+def load_prompts(dataset_name: str):
+    if dataset_name == "ecqa":
+        from prompts.ecqa_prompts import (
+            get_ce_generation_prompt,
+            get_critique_prompt_phase2,
+            get_ce_refinement_prompt,
+        )
+    elif dataset_name == "esnli":
+        from prompts.esnli_prompts import (
+            get_ce_generation_prompt,
+            get_critique_prompt_phase2,
+            get_ce_refinement_prompt,
+        )
+    else:
+        from prompts.comve_prompts import (
+            get_ce_generation_prompt,
+            get_critique_prompt_phase2,
+            get_ce_refinement_prompt,
+        )
+    return get_ce_generation_prompt, get_critique_prompt_phase2, get_ce_refinement_prompt
 
 
 # ------------------------------------------------------------------ #
@@ -63,16 +80,18 @@ def parse_explanation(text: str) -> str:
     return text.strip()
 
 
-def answer_to_labels(answer_final: str):
+def answer_to_labels(answer_final: str, original_answer: str = None):
     """
-    Convert answer final ('A' or 'B') to y and y_prime.
-    y       = what model actually predicted
-    y_prime = the opposite
+    Convert answer final to y and y_prime.
+    ComVE: only A/B, so y_prime is trivially the other one.
+    ECQA:  A-E, so y_prime must be supplied (original answer before the flip).
     """
-    if answer_final.strip().upper() == "A":
-        return "A", "B"
+    y = answer_final.strip().upper()
+    if original_answer is not None:
+        y_prime = original_answer.strip().upper()
     else:
-        return "B", "A"
+        y_prime = "B" if y == "A" else "A"
+    return y, y_prime
 
 
 # ------------------------------------------------------------------ #
@@ -80,7 +99,8 @@ def answer_to_labels(answer_final: str):
 # ------------------------------------------------------------------ #
 
 def pcr_phase2(item: dict, model: GenerationModel,
-               max_iters: int = 3, tau: float = 0.95) -> dict:
+               max_iters: int = 3, tau: float = 0.95,
+               dataset_name: str = "comve", original_answer: str = None) -> dict:
     """
     Runs PCR Phase 2 on a single item.
 
@@ -94,17 +114,27 @@ def pcr_phase2(item: dict, model: GenerationModel,
 
     Starts fresh from SR-NLE's explanation (same input as Phase 1).
     """
-    sentence0  = item["sentence0"]
-    sentence1  = item["sentence1"]
-    de         = item["explanation"]["final"]    # SR-NLE's explanation → DE
-    y, y_prime = answer_to_labels(item["answer"]["final"])
+    de         = item["explanation"]["final"]
+    y, y_prime = answer_to_labels(item["answer"]["final"], original_answer)
 
-    # ---------------------------------------------------------------- #
-    # Step 1: Generate CE
-    # ---------------------------------------------------------------- #
-    ce_prompt = get_ce_generation_prompt(sentence0, sentence1, y, y_prime)
-    ce_raw    = model.get_generated(ce_prompt, do_sample=False, max_new_tokens=150)[0]
-    ce        = parse_explanation(ce_raw)
+    get_ce_generation_prompt, get_critique_prompt_phase2, get_ce_refinement_prompt = load_prompts(dataset_name)
+
+    if dataset_name == "ecqa":
+        question = item["question"]
+        choices  = item["choices"]
+        ce_prompt = get_ce_generation_prompt(question, choices, y, y_prime)
+    elif dataset_name == "esnli":
+        premise    = item["premise"]
+        hypothesis = item["hypothesis"]
+        choices    = item["choices"]
+        ce_prompt = get_ce_generation_prompt(premise, hypothesis, choices, y, y_prime)
+    else:
+        sentence0 = item["sentence0"]
+        sentence1 = item["sentence1"]
+        ce_prompt = get_ce_generation_prompt(sentence0, sentence1, y, y_prime)
+
+    ce_raw = model.get_generated(ce_prompt, do_sample=False, max_new_tokens=150)[0]
+    ce     = parse_explanation(ce_raw)
 
     history   = []
     converged = False
@@ -142,31 +172,26 @@ def pcr_phase2(item: dict, model: GenerationModel,
             break
 
         # Step 4: Critique + refine using GAP-informed prompts
-        # Refine DE — tell model exactly how far it is from faithful
-        de_critique_prompt = get_critique_prompt_phase2(
-            sentence0, sentence1,
-            de, ce,
-            y, y_prime,
-            delta_t, delta_prime_t,
-            tau
-        )
-        de_raw = model.get_generated(
-            de_critique_prompt, do_sample=False, max_new_tokens=200
-        )[0]
-        de = parse_explanation(de_raw)
+        if dataset_name == "ecqa":
+            de_critique_prompt = get_critique_prompt_phase2(
+                question, choices, de, ce, y, y_prime, delta_t, delta_prime_t, tau)
+            ce_refine_prompt = get_ce_refinement_prompt(
+                question, choices, de, ce, y, y_prime, delta_t, delta_prime_t, tau)
+        elif dataset_name == "esnli":
+            de_critique_prompt = get_critique_prompt_phase2(
+                premise, hypothesis, choices, de, ce, y, y_prime, delta_t, delta_prime_t, tau)
+            ce_refine_prompt = get_ce_refinement_prompt(
+                premise, hypothesis, choices, de, ce, y, y_prime, delta_t, delta_prime_t, tau)
+        else:
+            de_critique_prompt = get_critique_prompt_phase2(
+                sentence0, sentence1, de, ce, y, y_prime, delta_t, delta_prime_t, tau)
+            ce_refine_prompt = get_ce_refinement_prompt(
+                sentence0, sentence1, de, ce, y, y_prime, delta_t, delta_prime_t, tau)
 
-        # Refine CE — uses CE's own margin gap
-        ce_refine_prompt = get_ce_refinement_prompt(
-            sentence0, sentence1,
-            de, ce,
-            y, y_prime,
-            delta_t, delta_prime_t,
-            tau
-        )
-        ce_raw = model.get_generated(
-            ce_refine_prompt, do_sample=False, max_new_tokens=200
-        )[0]
-        ce = parse_explanation(ce_raw)
+        de_raw = model.get_generated(de_critique_prompt, do_sample=False, max_new_tokens=200)[0]
+        de     = parse_explanation(de_raw)
+        ce_raw = model.get_generated(ce_refine_prompt, do_sample=False, max_new_tokens=200)[0]
+        ce     = parse_explanation(ce_raw)
 
     # Final margin check after last iteration (if not converged)
     if not converged:
@@ -234,6 +259,15 @@ def main():
     print(f"Loaded {len(data)} items from {input_path}")
     print(f"Model: {args.model_name} | Max iters: {args.max_iters} | tau: {args.tau}")
 
+    # For ECQA/eSNLI: load original answers to determine y_prime
+    original_answers = {}
+    if args.dataset_name in ("ecqa", "esnli"):
+        org_path = (f"{base}/original/{args.prompt_type}-{args.dataset_name}-{args.model_name}"
+                    f"/answer_gd.json")
+        with open(org_path, "r", encoding="utf-8") as f:
+            org_data = json.load(f)
+        original_answers = {item["idx"]: item["answer"]["final"] for item in org_data}
+
     # Load model
     model = GenerationModel(args.model_name)
 
@@ -254,7 +288,9 @@ def main():
             with open(output_path, "w", encoding="utf-8") as f:
                 json.dump(results, f, indent=2, ensure_ascii=False)
             continue
-        item = pcr_phase2(item, model, max_iters=args.max_iters, tau=args.tau)
+        orig_ans = original_answers.get(item["idx"]) if args.dataset_name == "ecqa" else None
+        item = pcr_phase2(item, model, max_iters=args.max_iters, tau=args.tau,
+                          dataset_name=args.dataset_name, original_answer=orig_ans)
         results.append(item)
         # Save incrementally after each item
         with open(output_path, "w", encoding="utf-8") as f:

@@ -1,0 +1,7 @@
+Dataset,Model,Stage,Faith Rate,Unfaith Rate,Improvement
+ECQA,Llama,Baseline,57.44%,42.56%,—
+ECQA,Llama,Iter 0,60.27%,39.73%,+2.83%
+ECQA,Llama,Iter 1,61.48%,38.52%,+4.04%
+ECQA,Llama,Iter 2,62.36%,37.64%,+4.92%
+ECQA,Llama,PCR Phase 1,61.01%,38.99%,+3.57%
+ECQA,Llama,PCR Phase 2,63.30%,36.70%,+5.86%

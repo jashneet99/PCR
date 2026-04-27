@@ -1,0 +1,7 @@
+Dataset,Model,Stage,Faith Rate,Unfaith Rate,Improvement
+eSNLI,Mistral,Baseline,54.31%,45.69%,—
+eSNLI,Mistral,Iter 0,55.10%,44.90%,+0.78%
+eSNLI,Mistral,Iter 1,54.90%,45.10%,+0.59%
+eSNLI,Mistral,Iter 2,55.03%,44.97%,+0.72%
+eSNLI,Mistral,PCR Phase 1,70.92%,29.08%,+16.61%
+eSNLI,Mistral,PCR Phase 2,73.92%,26.08%,+19.61%

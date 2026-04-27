@@ -27,11 +27,28 @@ from tqdm import tqdm
 sys.path.append(str(Path(__file__).parent.parent))
 
 from model.model import GenerationModel
-from prompts.comve_prompts import (
-    get_ce_generation_prompt,
-    get_mutual_exclusivity_prompt,
-    get_critique_prompt_phase1,
-)
+
+
+def load_prompts(dataset_name: str):
+    if dataset_name == "ecqa":
+        from prompts.ecqa_prompts import (
+            get_ce_generation_prompt,
+            get_mutual_exclusivity_prompt,
+            get_critique_prompt_phase1,
+        )
+    elif dataset_name == "esnli":
+        from prompts.esnli_prompts import (
+            get_ce_generation_prompt,
+            get_mutual_exclusivity_prompt,
+            get_critique_prompt_phase1,
+        )
+    else:
+        from prompts.comve_prompts import (
+            get_ce_generation_prompt,
+            get_mutual_exclusivity_prompt,
+            get_critique_prompt_phase1,
+        )
+    return get_ce_generation_prompt, get_mutual_exclusivity_prompt, get_critique_prompt_phase1
 
 
 # ------------------------------------------------------------------ #
@@ -52,22 +69,26 @@ def parse_yes_no(text: str) -> bool:
     return text.startswith("YES")
 
 
-def answer_to_labels(answer_final: str):
+def answer_to_labels(answer_final: str, original_answer: str = None):
     """
-    Convert answer final (e.g. 'A' or 'B') to
-    y (what model predicted) and y_prime (the other option).
+    Convert answer final to y and y_prime.
+    ComVE: only A/B, so y_prime is trivially the other one.
+    ECQA:  A-E, so y_prime must be supplied (original answer before the flip).
     """
-    if answer_final.strip().upper() == "A":
-        return "A", "B"
+    y = answer_final.strip().upper()
+    if original_answer is not None:
+        y_prime = original_answer.strip().upper()
     else:
-        return "B", "A"
+        y_prime = "B" if y == "A" else "A"
+    return y, y_prime
 
 
 # ------------------------------------------------------------------ #
 #  Main PCR Phase 1 Loop                                              #
 # ------------------------------------------------------------------ #
 
-def pcr_phase1(item: dict, model: GenerationModel, max_iters: int = 3) -> dict:
+def pcr_phase1(item: dict, model: GenerationModel, max_iters: int = 3,
+               dataset_name: str = "comve", original_answer: str = None) -> dict:
     """
     Runs PCR Phase 1 on a single item.
 
@@ -78,16 +99,28 @@ def pcr_phase1(item: dict, model: GenerationModel, max_iters: int = 3) -> dict:
         4. If No → critique → refine DE + CE → repeat
         5. Return updated item with PCR results
     """
-    sentence0   = item["sentence0"]
-    sentence1   = item["sentence1"]
-    # edit_word   = item["edit_word"]
-    de          = item["explanation"]["final"]
-    y, y_prime  = answer_to_labels(item["answer"]["final"])
+    de         = item["explanation"]["final"]
+    y, y_prime = answer_to_labels(item["answer"]["final"], original_answer)
 
-    # --- Step 1: Generate CE ---
-    ce_prompt = get_ce_generation_prompt(sentence0, sentence1, y, y_prime)
-    ce_raw    = model.get_generated(ce_prompt, do_sample=False, max_new_tokens=150)[0]
-    ce        = parse_explanation(ce_raw)
+    if dataset_name == "ecqa":
+        question = item["question"]
+        choices  = item["choices"]
+        get_ce_generation_prompt, get_mutual_exclusivity_prompt, get_critique_prompt_phase1 = load_prompts("ecqa")
+        ce_prompt = get_ce_generation_prompt(question, choices, y, y_prime)
+    elif dataset_name == "esnli":
+        premise    = item["premise"]
+        hypothesis = item["hypothesis"]
+        choices    = item["choices"]
+        get_ce_generation_prompt, get_mutual_exclusivity_prompt, get_critique_prompt_phase1 = load_prompts("esnli")
+        ce_prompt = get_ce_generation_prompt(premise, hypothesis, choices, y, y_prime)
+    else:
+        sentence0 = item["sentence0"]
+        sentence1 = item["sentence1"]
+        get_ce_generation_prompt, get_mutual_exclusivity_prompt, get_critique_prompt_phase1 = load_prompts("comve")
+        ce_prompt = get_ce_generation_prompt(sentence0, sentence1, y, y_prime)
+
+    ce_raw = model.get_generated(ce_prompt, do_sample=False, max_new_tokens=150)[0]
+    ce     = parse_explanation(ce_raw)
 
     history = [{
         "iteration": -1,
@@ -101,9 +134,14 @@ def pcr_phase1(item: dict, model: GenerationModel, max_iters: int = 3) -> dict:
     # --- Steps 3-4: Iterative refinement ---
     for i in range(max_iters):
         # Check mutual exclusivity
-        me_prompt  = get_mutual_exclusivity_prompt(sentence0, sentence1, de, ce, y, y_prime)
-        me_raw     = model.get_generated(me_prompt, do_sample=False, max_new_tokens=10)[0]
-        is_me      = parse_yes_no(me_raw)
+        if dataset_name == "ecqa":
+            me_prompt = get_mutual_exclusivity_prompt(question, choices, de, ce, y, y_prime)
+        elif dataset_name == "esnli":
+            me_prompt = get_mutual_exclusivity_prompt(premise, hypothesis, choices, de, ce, y, y_prime)
+        else:
+            me_prompt = get_mutual_exclusivity_prompt(sentence0, sentence1, de, ce, y, y_prime)
+        me_raw = model.get_generated(me_prompt, do_sample=False, max_new_tokens=10)[0]
+        is_me  = parse_yes_no(me_raw)
 
         history[-1]["mutually_exclusive"] = is_me
         history[-1]["me_response"]        = me_raw.strip()
@@ -113,22 +151,20 @@ def pcr_phase1(item: dict, model: GenerationModel, max_iters: int = 3) -> dict:
             break
 
         # Critique + refine DE
-        de_critique_prompt = get_critique_prompt_phase1(
-            sentence0, sentence1, de, ce, y, y_prime
-        )
-        de_raw = model.get_generated(
-            de_critique_prompt, do_sample=False, max_new_tokens=150
-        )[0]
-        de = parse_explanation(de_raw)
+        if dataset_name == "ecqa":
+            de_critique_prompt = get_critique_prompt_phase1(question, choices, de, ce, y, y_prime)
+            ce_critique_prompt = get_critique_prompt_phase1(question, choices, ce, de, y_prime, y)
+        elif dataset_name == "esnli":
+            de_critique_prompt = get_critique_prompt_phase1(premise, hypothesis, choices, de, ce, y, y_prime)
+            ce_critique_prompt = get_critique_prompt_phase1(premise, hypothesis, choices, ce, de, y_prime, y)
+        else:
+            de_critique_prompt = get_critique_prompt_phase1(sentence0, sentence1, de, ce, y, y_prime)
+            ce_critique_prompt = get_critique_prompt_phase1(sentence0, sentence1, ce, de, y_prime, y)
 
-        # Refine CE (ask to improve from y_prime's perspective)
-        ce_critique_prompt = get_critique_prompt_phase1(
-            sentence0, sentence1, ce, de, y_prime, y  # swapped roles
-        )
-        ce_raw = model.get_generated(
-            ce_critique_prompt, do_sample=False, max_new_tokens=150
-        )[0]
-        ce = parse_explanation(ce_raw)
+        de_raw = model.get_generated(de_critique_prompt, do_sample=False, max_new_tokens=150)[0]
+        de     = parse_explanation(de_raw)
+        ce_raw = model.get_generated(ce_critique_prompt, do_sample=False, max_new_tokens=150)[0]
+        ce     = parse_explanation(ce_raw)
 
         history.append({
             "iteration":          i,
@@ -139,7 +175,12 @@ def pcr_phase1(item: dict, model: GenerationModel, max_iters: int = 3) -> dict:
 
     # Final mutual exclusivity check
     if not converged:
-        me_prompt = get_mutual_exclusivity_prompt(sentence0, sentence1, de, ce, y, y_prime)
+        if dataset_name == "ecqa":
+            me_prompt = get_mutual_exclusivity_prompt(question, choices, de, ce, y, y_prime)
+        elif dataset_name == "esnli":
+            me_prompt = get_mutual_exclusivity_prompt(premise, hypothesis, choices, de, ce, y, y_prime)
+        else:
+            me_prompt = get_mutual_exclusivity_prompt(sentence0, sentence1, de, ce, y, y_prime)
         me_raw    = model.get_generated(me_prompt, do_sample=False, max_new_tokens=10)[0]
         is_me     = parse_yes_no(me_raw)
         history[-1]["mutually_exclusive"] = is_me
@@ -190,6 +231,15 @@ def main():
     print(f"Loaded {len(data)} items from {input_path}")
     print(f"Model: {args.model_name} | Max iters: {args.max_iters}")
 
+    # For ECQA/eSNLI: load original answers to determine y_prime
+    original_answers = {}
+    if args.dataset_name in ("ecqa", "esnli"):
+        org_path = (f"{base}/original/{args.prompt_type}-{args.dataset_name}-{args.model_name}"
+                    f"/answer_gd.json")
+        with open(org_path, "r", encoding="utf-8") as f:
+            org_data = json.load(f)
+        original_answers = {item["idx"]: item["answer"]["final"] for item in org_data}
+
     # Load model
     model = GenerationModel(args.model_name)
 
@@ -208,7 +258,9 @@ def main():
             item["pcr_phase1"] = None
             results.append(item)
             continue
-        item = pcr_phase1(item, model, max_iters=args.max_iters)
+        orig_ans = original_answers.get(item["idx"]) if args.dataset_name == "ecqa" else None
+        item = pcr_phase1(item, model, max_iters=args.max_iters,
+                          dataset_name=args.dataset_name, original_answer=orig_ans)
         results.append(item)
         # Save incrementally after each item
         with open(output_path, "w", encoding="utf-8") as f:

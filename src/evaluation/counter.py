@@ -47,7 +47,7 @@ if __name__ == '__main__':
     base = 'experiments'
     
     prompt_types = ['zs']
-    datasets = ['comve']
+    datasets = ['comve', 'ecqa']
     models = ['qwen']
     answer_sources = ['gd']
     

@@ -116,7 +116,7 @@ if __name__ == '__main__':
     dataset_type = "counterfactual"
     prompt_type = "zs"
     
-    datasets = ['comve']
+    datasets = ['comve', 'ecqa']
     models = ['qwen']
     feedback_types = ['nl']
     explanation_sources = ['gd']

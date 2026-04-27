@@ -1,0 +1,7 @@
+Dataset,Model,Stage,Faith Rate,Unfaith Rate,Improvement
+eSNLI,Qwen,Baseline,59.18%,40.82%,—
+eSNLI,Qwen,Iter 0,63.27%,36.73%,+4.08%
+eSNLI,Qwen,Iter 1,64.20%,35.80%,+5.01%
+eSNLI,Qwen,Iter 2,64.49%,35.51%,+5.31%
+eSNLI,Qwen,PCR Phase 1,70.32%,29.68%,+11.14%
+eSNLI,Qwen,PCR Phase 2,89.74%,10.26%,+30.56%

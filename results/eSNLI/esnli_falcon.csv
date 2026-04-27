@@ -1,0 +1,7 @@
+Dataset,Model,Stage,Faith Rate,Unfaith Rate,Improvement
+eSNLI,Falcon,Baseline,82.11%,17.89%,—
+eSNLI,Falcon,Iter 0,80.53%,19.47%,-1.58%
+eSNLI,Falcon,Iter 1,78.82%,21.18%,-3.29%
+eSNLI,Falcon,Iter 2,77.72%,22.28%,-4.39%
+eSNLI,Falcon,PCR Phase 1,81.63%,18.37%,-0.48%
+eSNLI,Falcon,PCR Phase 2,84.78%,15.22%,+2.67%

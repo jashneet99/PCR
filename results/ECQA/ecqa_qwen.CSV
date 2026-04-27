@@ -1,0 +1,7 @@
+Dataset,Model,Stage,Faith Rate,Unfaith Rate,Improvement
+ECQA,Qwen,Baseline,55.84%,44.16%,—
+ECQA,Qwen,Iter 0,58.09%,41.91%,+2.25%
+ECQA,Qwen,Iter 1,59.69%,40.31%,+3.85%
+ECQA,Qwen,Iter 2,60.65%,39.35%,+4.81%
+ECQA,Qwen,PCR Phase 1,70.35%,29.65%,+14.51%
+ECQA,Qwen,PCR Phase 2,74.33%,25.67%,+18.49%

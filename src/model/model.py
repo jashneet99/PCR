@@ -19,7 +19,7 @@ class GenerationModel:
         self.llm = LLM(
             model=self.model_id,
             dtype="bfloat16",
-            gpu_memory_utilization=0.85,
+            gpu_memory_utilization=float(os.environ.get("VLLM_GPU_MEM_UTIL", "0.85")),
             tensor_parallel_size=1,
         )
         self.tokenizer = self.llm.get_tokenizer()

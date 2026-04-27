@@ -1,0 +1,7 @@
+Dataset,Model,Stage,Faith Rate,Unfaith Rate,Improvement
+ECQA,Mistral,Baseline,59.10%,40.90%,—
+ECQA,Mistral,Iter 0,57.29%,42.71%,-1.81%
+ECQA,Mistral,Iter 1,57.29%,42.71%,-1.81%
+ECQA,Mistral,Iter 2,57.87%,42.13%,-1.22%
+ECQA,Mistral,PCR Phase 1,64.26%,35.74%,+5.16%
+ECQA,Mistral,PCR Phase 2,67.98%,32.02%,+8.88%

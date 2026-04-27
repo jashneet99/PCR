@@ -1,0 +1,7 @@
+Dataset,Model,Stage,Faith Rate,Unfaith Rate,Improvement
+eSNLI,Llama,Baseline,48.47%,51.53%,—
+eSNLI,Llama,Iter 0,53.37%,46.63%,+4.91%
+eSNLI,Llama,Iter 1,55.90%,44.10%,+7.44%
+eSNLI,Llama,Iter 2,56.37%,43.63%,+7.90%
+eSNLI,Llama,PCR Phase 1,63.57%,36.43%,+15.10%
+eSNLI,Llama,PCR Phase 2,66.95%,33.05%,+18.48%

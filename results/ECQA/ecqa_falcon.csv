@@ -1,0 +1,7 @@
+Dataset,Model,Stage,Faith Rate,Unfaith Rate,Improvement
+ECQA,Falcon,Baseline,54.38%,45.62%,—
+ECQA,Falcon,Iter 0,56.56%,43.44%,+2.18%
+ECQA,Falcon,Iter 1,57.40%,42.60%,+3.02%
+ECQA,Falcon,Iter 2,57.40%,42.60%,+3.02%
+ECQA,Falcon,PCR Phase 1,57.46%,42.54%,+3.08%
+ECQA,Falcon,PCR Phase 2,66.71%,33.29%,+12.33%

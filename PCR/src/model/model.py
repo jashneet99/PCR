@@ -31,7 +31,7 @@ class GenerationModel:
         self.llm = LLM(
             model=self.model_id,
             dtype="bfloat16",
-            gpu_memory_utilization=0.85,
+            gpu_memory_utilization=float(os.environ.get("VLLM_GPU_MEM_UTIL", "0.85")),
             tensor_parallel_size=1,
         )
         self.tokenizer = self.llm.get_tokenizer()
@@ -145,37 +145,40 @@ class GenerationModel:
         Returns:
             Δt (float) in range [-1, +1]
         """
-        # Step 1 — Build prompt with ONLY the explanation
-        prompt = (
+        # Step 1 — Build base prompt with ONLY the explanation
+        base_prompt = (
             f"Based only on the following explanation, predict the answer.\n\n"
             f"Explanation: {explanation}\n\n"
             f"Answer (choose one):"
         )
 
-        # Step 2 — Get logprobs for the first generated token
-        # logprobs=500 ensures y and y_prime tokens are captured
-        sampling_params = SamplingParams(
-            temperature=0.0,
-            max_tokens=1,
-            logprobs=500,
-        )
-        output = self.llm.generate([prompt], sampling_params)[0]
-
-        # logprobs[0] = dict of {token_id: Logprob} for the first generated token
-        logprobs_dict = output.outputs[0].logprobs[0]
-
-        # Step 3 — Extract log probabilities for y and y_prime tokens
+        # Step 2 — Get token IDs and their decoded strings
         y_token_id       = self.get_answer_token_id(y)
         y_prime_token_id = self.get_answer_token_id(y_prime)
 
-        NEG_INF     = -1e9   # fallback if token not in top-500
-        log_y       = logprobs_dict[y_token_id].logprob       if y_token_id       in logprobs_dict else NEG_INF
-        log_y_prime = logprobs_dict[y_prime_token_id].logprob if y_prime_token_id in logprobs_dict else NEG_INF
+        y_token_str       = self.tokenizer.decode([y_token_id])
+        y_prime_token_str = self.tokenizer.decode([y_prime_token_id])
 
-        # Step 4 — Binary softmax over log probabilities
+        # Step 3 — Append each answer token to the prompt and batch both.
+        # prompt_logprobs always includes the actual token's logprob,
+        # avoiding vLLM v1's logprobs cap of 20.
+        prompt_y       = base_prompt + y_token_str
+        prompt_y_prime = base_prompt + y_prime_token_str
+
+        sampling_params = SamplingParams(
+            temperature=0.0,
+            max_tokens=1,
+            prompt_logprobs=1,
+        )
+        outputs = self.llm.generate([prompt_y, prompt_y_prime], sampling_params)
+
+        # Step 4 — Extract log probabilities from the last prompt token position 
+        log_y       = outputs[0].prompt_logprobs[-1][y_token_id].logprob
+        log_y_prime = outputs[1].prompt_logprobs[-1][y_prime_token_id].logprob
+
+        # Step 5 — Binary softmax → margin Δt
         log_sum   = math.log(math.exp(log_y) + math.exp(log_y_prime))
         p_y       = math.exp(log_y       - log_sum)
         p_y_prime = math.exp(log_y_prime - log_sum)
 
-        # Step 5 — Compute margin Δt
         return p_y - p_y_prime

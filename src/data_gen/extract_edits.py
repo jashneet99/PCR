@@ -21,10 +21,6 @@ def extract(generated_edits):
                 edit_list.append(edit_content_clean)
                 word_list.append(word)
 
-        # Stop after 10 valid edits to avoid hallucinated extra content
-        if len(edit_list) == 10:
-            break
-
     return edit_list, word_list
 
 
@@ -134,8 +130,10 @@ def extract_edits(dataset, dataset_name):
         for data in tqdm(dataset, desc="Processing"):
             question_generated_edits = data['edit_gen_question']
             question_edit_list, question_word_list = extract(question_generated_edits)
+            question_edit_list = question_edit_list[:10]
+            question_word_list = question_word_list[:10]
 
-            if len(question_edit_list) != 20:
+            if len(question_edit_list) != 10:
                 extract_edits_failed.append(data)
                 extract_edits_failed_idx.append(data['idx'])
                 continue
