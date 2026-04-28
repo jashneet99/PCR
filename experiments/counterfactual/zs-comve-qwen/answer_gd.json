@@ -161,16 +161,16 @@
         "answer": {
             "prompt": "You are given two sentences. Identify which one violates commonsense.\n\nSentence 0: when it rains humidity forms\nSentence 1: when it is gradually hot humidity forms.\nAnswer Options:\n(A) Sentence0\n(B) Sentence1\n\nPlease select the most appropriate answer without any explanation.\n\nYou must give your answer only in the following format:\nAnswer: (X)\n",
             "outputs": [
-                "Answer: (B)"
+                "Answer: (A)"
             ],
             "parsed": [
-                "B"
+                "A"
             ],
             "valid_indices": [
                 0
             ],
             "selected_indices": null,
-            "final": "B"
+            "final": "A"
         }
     },
     {
@@ -14690,16 +14690,16 @@
         "answer": {
             "prompt": "You are given two sentences. Identify which one violates commonsense.\n\nSentence 0: surveys are great to make quick money\nSentence 1: surveys have been publicly known to harm children\nAnswer Options:\n(A) Sentence0\n(B) Sentence1\n\nPlease select the most appropriate answer without any explanation.\n\nYou must give your answer only in the following format:\nAnswer: (X)\n",
             "outputs": [
-                "Answer: (A)"
+                "Answer: (B)"
             ],
             "parsed": [
-                "A"
+                "B"
             ],
             "valid_indices": [
                 0
             ],
             "selected_indices": null,
-            "final": "A"
+            "final": "B"
         }
     },
     {
@@ -18025,16 +18025,16 @@
         "answer": {
             "prompt": "You are given two sentences. Identify which one violates commonsense.\n\nSentence 0: A portable notebook can work with being plugged in.\nSentence 1: A computer can work with being plugged in\nAnswer Options:\n(A) Sentence0\n(B) Sentence1\n\nPlease select the most appropriate answer without any explanation.\n\nYou must give your answer only in the following format:\nAnswer: (X)\n",
             "outputs": [
-                "Answer: (A)"
+                "Answer: (B)"
             ],
             "parsed": [
-                "A"
+                "B"
             ],
             "valid_indices": [
                 0
             ],
             "selected_indices": null,
-            "final": "A"
+            "final": "B"
         }
     },
     {
@@ -33656,16 +33656,16 @@
         "answer": {
             "prompt": "You are given two sentences. Identify which one violates commonsense.\n\nSentence 0: I swam to the lowest point of the pool in one breath\nSentence 1: I steadily swam to the lowest point of the ocean in one breath.\nAnswer Options:\n(A) Sentence0\n(B) Sentence1\n\nPlease select the most appropriate answer without any explanation.\n\nYou must give your answer only in the following format:\nAnswer: (X)\n",
             "outputs": [
-                "Answer: (A)"
+                "Answer: (B)"
             ],
             "parsed": [
-                "A"
+                "B"
             ],
             "valid_indices": [
                 0
             ],
             "selected_indices": null,
-            "final": "A"
+            "final": "B"
         }
     },
     {
@@ -52216,16 +52216,16 @@
         "answer": {
             "prompt": "You are given two sentences. Identify which one violates commonsense.\n\nSentence 0: The worm swallowed the bird quickly.\nSentence 1: The bird swallowed the worm.\nAnswer Options:\n(A) Sentence0\n(B) Sentence1\n\nPlease select the most appropriate answer without any explanation.\n\nYou must give your answer only in the following format:\nAnswer: (X)\n",
             "outputs": [
-                "Answer: (B)"
+                "Answer: (A)"
             ],
             "parsed": [
-                "B"
+                "A"
             ],
             "valid_indices": [
                 0
             ],
             "selected_indices": null,
-            "final": "B"
+            "final": "A"
         }
     },
     {
@@ -55406,16 +55406,16 @@
         "answer": {
             "prompt": "You are given two sentences. Identify which one violates commonsense.\n\nSentence 0: Please turn off the lights? It is shinny\nSentence 1: Please turn on the dim lights? It is shinny.\nAnswer Options:\n(A) Sentence0\n(B) Sentence1\n\nPlease select the most appropriate answer without any explanation.\n\nYou must give your answer only in the following format:\nAnswer: (X)\n",
             "outputs": [
-                "Answer: (B)"
+                "Answer: (A)"
             ],
             "parsed": [
-                "B"
+                "A"
             ],
             "valid_indices": [
                 0
             ],
             "selected_indices": null,
-            "final": "B"
+            "final": "A"
         }
     },
     {
@@ -55522,16 +55522,16 @@
         "answer": {
             "prompt": "You are given two sentences. Identify which one violates commonsense.\n\nSentence 0: Please turn off the lights? It is shinny\nSentence 1: Please turn on the lights? It is shinny and shiny.\nAnswer Options:\n(A) Sentence0\n(B) Sentence1\n\nPlease select the most appropriate answer without any explanation.\n\nYou must give your answer only in the following format:\nAnswer: (X)\n",
             "outputs": [
-                "Answer: (B)"
+                "Answer: (A)"
             ],
             "parsed": [
-                "B"
+                "A"
             ],
             "valid_indices": [
                 0
             ],
             "selected_indices": null,
-            "final": "B"
+            "final": "A"
         }
     },
     {
@@ -59089,16 +59089,16 @@
         "answer": {
             "prompt": "You are given two sentences. Identify which one violates commonsense.\n\nSentence 0: People who start reckless fires are pyromaniacs.\nSentence 1: My friend started a campfire on the 4th of July.\nAnswer Options:\n(A) Sentence0\n(B) Sentence1\n\nPlease select the most appropriate answer without any explanation.\n\nYou must give your answer only in the following format:\nAnswer: (X)\n",
             "outputs": [
-                "Answer: (B)"
+                "Answer: (A)"
             ],
             "parsed": [
-                "B"
+                "A"
             ],
             "valid_indices": [
                 0
             ],
             "selected_indices": null,
-            "final": "B"
+            "final": "A"
         }
     },
     {
@@ -59118,16 +59118,16 @@
         "answer": {
             "prompt": "You are given two sentences. Identify which one violates commonsense.\n\nSentence 0: People who carelessly start fires are pyromaniacs.\nSentence 1: My friend started a campfire on the 4th of July.\nAnswer Options:\n(A) Sentence0\n(B) Sentence1\n\nPlease select the most appropriate answer without any explanation.\n\nYou must give your answer only in the following format:\nAnswer: (X)\n",
             "outputs": [
-                "Answer: (B)"
+                "Answer: (A)"
             ],
             "parsed": [
-                "B"
+                "A"
             ],
             "valid_indices": [
                 0
             ],
             "selected_indices": null,
-            "final": "B"
+            "final": "A"
         }
     },
     {
@@ -59147,16 +59147,16 @@
         "answer": {
             "prompt": "You are given two sentences. Identify which one violates commonsense.\n\nSentence 0: People who start devastating fires are pyromaniacs.\nSentence 1: My friend started a campfire on the 4th of July.\nAnswer Options:\n(A) Sentence0\n(B) Sentence1\n\nPlease select the most appropriate answer without any explanation.\n\nYou must give your answer only in the following format:\nAnswer: (X)\n",
             "outputs": [
-                "Answer: (B)"
+                "Answer: (A)"
             ],
             "parsed": [
-                "B"
+                "A"
             ],
             "valid_indices": [
                 0
             ],
             "selected_indices": null,
-            "final": "B"
+            "final": "A"
         }
     },
     {
@@ -59408,16 +59408,16 @@
         "answer": {
             "prompt": "You are given two sentences. Identify which one violates commonsense.\n\nSentence 0: Ash caught all the Pokemon\nSentence 1: The mysterious Pokemon caught Ash.\nAnswer Options:\n(A) Sentence0\n(B) Sentence1\n\nPlease select the most appropriate answer without any explanation.\n\nYou must give your answer only in the following format:\nAnswer: (X)\n",
             "outputs": [
-                "Answer: (A)"
+                "Answer: (B)"
             ],
             "parsed": [
-                "A"
+                "B"
             ],
             "valid_indices": [
                 0
             ],
             "selected_indices": null,
-            "final": "A"
+            "final": "B"
         }
     },
     {
@@ -63149,16 +63149,16 @@
         "answer": {
             "prompt": "You are given two sentences. Identify which one violates commonsense.\n\nSentence 0: An old luxurious car is expensive.\nSentence 1: A new cars are expensive.\nAnswer Options:\n(A) Sentence0\n(B) Sentence1\n\nPlease select the most appropriate answer without any explanation.\n\nYou must give your answer only in the following format:\nAnswer: (X)\n",
             "outputs": [
-                "Answer: (A)"
+                "Answer: (B)"
             ],
             "parsed": [
-                "A"
+                "B"
             ],
             "valid_indices": [
                 0
             ],
             "selected_indices": null,
-            "final": "A"
+            "final": "B"
         }
     },
     {
@@ -67963,16 +67963,16 @@
         "answer": {
             "prompt": "You are given two sentences. Identify which one violates commonsense.\n\nSentence 0: in summers, always the weather is rainy.\nSentence 1: in scorching summers, always the weather is cold.\nAnswer Options:\n(A) Sentence0\n(B) Sentence1\n\nPlease select the most appropriate answer without any explanation.\n\nYou must give your answer only in the following format:\nAnswer: (X)\n",
             "outputs": [
-                "Answer: (A)"
+                "Answer: (B)"
             ],
             "parsed": [
-                "A"
+                "B"
             ],
             "valid_indices": [
                 0
             ],
             "selected_indices": null,
-            "final": "A"
+            "final": "B"
         }
     },
     {
@@ -68050,16 +68050,16 @@
         "answer": {
             "prompt": "You are given two sentences. Identify which one violates commonsense.\n\nSentence 0: in summers, always the weather is rainy.\nSentence 1: in balmy summers, always the weather is cold.\nAnswer Options:\n(A) Sentence0\n(B) Sentence1\n\nPlease select the most appropriate answer without any explanation.\n\nYou must give your answer only in the following format:\nAnswer: (X)\n",
             "outputs": [
-                "Answer: (B)"
+                "Answer: (A)"
             ],
             "parsed": [
-                "B"
+                "A"
             ],
             "valid_indices": [
                 0
             ],
             "selected_indices": null,
-            "final": "B"
+            "final": "A"
         }
     },
     {
@@ -71704,16 +71704,16 @@
         "answer": {
             "prompt": "You are given two sentences. Identify which one violates commonsense.\n\nSentence 0: Michael cautiously swam across the Pacific Ocean.\nSentence 1: Micheal swam across the pool\nAnswer Options:\n(A) Sentence0\n(B) Sentence1\n\nPlease select the most appropriate answer without any explanation.\n\nYou must give your answer only in the following format:\nAnswer: (X)\n",
             "outputs": [
-                "Answer: (B)"
+                "Answer: (A)"
             ],
             "parsed": [
-                "B"
+                "A"
             ],
             "valid_indices": [
                 0
             ],
             "selected_indices": null,
-            "final": "B"
+            "final": "A"
         }
     },
     {
@@ -76257,16 +76257,16 @@
         "answer": {
             "prompt": "You are given two sentences. Identify which one violates commonsense.\n\nSentence 0: Women are usually larger than taller men.\nSentence 1: Men are usually larger than women.\nAnswer Options:\n(A) Sentence0\n(B) Sentence1\n\nPlease select the most appropriate answer without any explanation.\n\nYou must give your answer only in the following format:\nAnswer: (X)\n",
             "outputs": [
-                "Answer: (B)"
+                "Answer: (A)"
             ],
             "parsed": [
-                "B"
+                "A"
             ],
             "valid_indices": [
                 0
             ],
             "selected_indices": null,
-            "final": "B"
+            "final": "A"
         }
     },
     {
@@ -79302,16 +79302,16 @@
         "answer": {
             "prompt": "You are given two sentences. Identify which one violates commonsense.\n\nSentence 0: Something you find under a desk is the antique ceiling fan.\nSentence 1: Something you find under a desk is the floor.\nAnswer Options:\n(A) Sentence0\n(B) Sentence1\n\nPlease select the most appropriate answer without any explanation.\n\nYou must give your answer only in the following format:\nAnswer: (X)\n",
             "outputs": [
-                "Answer: (B)"
+                "Answer: (A)"
             ],
             "parsed": [
-                "B"
+                "A"
             ],
             "valid_indices": [
                 0
             ],
             "selected_indices": null,
-            "final": "B"
+            "final": "A"
         }
     },
     {
@@ -93686,16 +93686,16 @@
         "answer": {
             "prompt": "You are given two sentences. Identify which one violates commonsense.\n\nSentence 0: She efficiently cut down the grass with a chainsaw.\nSentence 1: She cut down the large oak tree with a chainsaw\nAnswer Options:\n(A) Sentence0\n(B) Sentence1\n\nPlease select the most appropriate answer without any explanation.\n\nYou must give your answer only in the following format:\nAnswer: (X)\n",
             "outputs": [
-                "Answer: (B)"
+                "Answer: (A)"
             ],
             "parsed": [
-                "B"
+                "A"
             ],
             "valid_indices": [
                 0
             ],
             "selected_indices": null,
-            "final": "B"
+            "final": "A"
         }
     },
     {
@@ -93831,16 +93831,16 @@
         "answer": {
             "prompt": "You are given two sentences. Identify which one violates commonsense.\n\nSentence 0: She cut down the overgrown grass with a chainsaw.\nSentence 1: She cut down the large oak tree with a chainsaw\nAnswer Options:\n(A) Sentence0\n(B) Sentence1\n\nPlease select the most appropriate answer without any explanation.\n\nYou must give your answer only in the following format:\nAnswer: (X)\n",
             "outputs": [
-                "Answer: (B)"
+                "Answer: (A)"
             ],
             "parsed": [
-                "B"
+                "A"
             ],
             "valid_indices": [
                 0
             ],
             "selected_indices": null,
-            "final": "B"
+            "final": "A"
         }
     },
     {
@@ -95194,16 +95194,16 @@
         "answer": {
             "prompt": "You are given two sentences. Identify which one violates commonsense.\n\nSentence 0: he went up the hill\nSentence 1: he went up a remote valley\nAnswer Options:\n(A) Sentence0\n(B) Sentence1\n\nPlease select the most appropriate answer without any explanation.\n\nYou must give your answer only in the following format:\nAnswer: (X)\n",
             "outputs": [
-                "Answer: (A)"
+                "Answer: (B)"
             ],
             "parsed": [
-                "A"
+                "B"
             ],
             "valid_indices": [
                 0
             ],
             "selected_indices": null,
-            "final": "A"
+            "final": "B"
         }
     },
     {
@@ -100588,16 +100588,16 @@
         "answer": {
             "prompt": "You are given two sentences. Identify which one violates commonsense.\n\nSentence 0: I use dumbbells to make big mussels body\nSentence 1: I use cotton to make big delicate mussels body.\nAnswer Options:\n(A) Sentence0\n(B) Sentence1\n\nPlease select the most appropriate answer without any explanation.\n\nYou must give your answer only in the following format:\nAnswer: (X)\n",
             "outputs": [
-                "Answer: (A)"
+                "Answer: (B)"
             ],
             "parsed": [
-                "A"
+                "B"
             ],
             "valid_indices": [
                 0
             ],
             "selected_indices": null,
-            "final": "A"
+            "final": "B"
         }
     },
     {
@@ -100675,16 +100675,16 @@
         "answer": {
             "prompt": "You are given two sentences. Identify which one violates commonsense.\n\nSentence 0: I use dumbbells to make big mussels body\nSentence 1: I quickly use cotton to make big mussels body.\nAnswer Options:\n(A) Sentence0\n(B) Sentence1\n\nPlease select the most appropriate answer without any explanation.\n\nYou must give your answer only in the following format:\nAnswer: (X)\n",
             "outputs": [
-                "Answer: (A)"
+                "Answer: (B)"
             ],
             "parsed": [
-                "A"
+                "B"
             ],
             "valid_indices": [
                 0
             ],
             "selected_indices": null,
-            "final": "A"
+            "final": "B"
         }
     },
     {
@@ -111144,16 +111144,16 @@
         "answer": {
             "prompt": "You are given two sentences. Identify which one violates commonsense.\n\nSentence 0: She purchased four thether tickets.\nSentence 1: She quickly purchased four supermarket tickets.\nAnswer Options:\n(A) Sentence0\n(B) Sentence1\n\nPlease select the most appropriate answer without any explanation.\n\nYou must give your answer only in the following format:\nAnswer: (X)\n",
             "outputs": [
-                "Answer: (B)"
+                "Answer: (A)"
             ],
             "parsed": [
-                "B"
+                "A"
             ],
             "valid_indices": [
                 0
             ],
             "selected_indices": null,
-            "final": "B"
+            "final": "A"
         }
     },
     {
@@ -111231,16 +111231,16 @@
         "answer": {
             "prompt": "You are given two sentences. Identify which one violates commonsense.\n\nSentence 0: She purchased four thether tickets.\nSentence 1: She carefully purchased four supermarket tickets.\nAnswer Options:\n(A) Sentence0\n(B) Sentence1\n\nPlease select the most appropriate answer without any explanation.\n\nYou must give your answer only in the following format:\nAnswer: (X)\n",
             "outputs": [
-                "Answer: (A)"
+                "Answer: (B)"
             ],
             "parsed": [
-                "A"
+                "B"
             ],
             "valid_indices": [
                 0
             ],
             "selected_indices": null,
-            "final": "A"
+            "final": "B"
         }
     },
     {
@@ -111869,16 +111869,16 @@
         "answer": {
             "prompt": "You are given two sentences. Identify which one violates commonsense.\n\nSentence 0: Dory moves the desk with her arms.\nSentence 1: Dory moves the desk with her fin gently.\nAnswer Options:\n(A) Sentence0\n(B) Sentence1\n\nPlease select the most appropriate answer without any explanation.\n\nYou must give your answer only in the following format:\nAnswer: (X)\n",
             "outputs": [
-                "Answer: (B)"
+                "Answer: (A)"
             ],
             "parsed": [
-                "B"
+                "A"
             ],
             "valid_indices": [
                 0
             ],
             "selected_indices": null,
-            "final": "B"
+            "final": "A"
         }
     },
     {
@@ -129733,16 +129733,16 @@
         "answer": {
             "prompt": "You are given two sentences. Identify which one violates commonsense.\n\nSentence 0: a person with no long legs accidentally kicked me in the subway\nSentence 1: a person with no legs accidentally hit me in the subway\nAnswer Options:\n(A) Sentence0\n(B) Sentence1\n\nPlease select the most appropriate answer without any explanation.\n\nYou must give your answer only in the following format:\nAnswer: (X)\n",
             "outputs": [
-                "Answer: (B)"
+                "Answer: (A)"
             ],
             "parsed": [
-                "B"
+                "A"
             ],
             "valid_indices": [
                 0
             ],
             "selected_indices": null,
-            "final": "B"
+            "final": "A"
         }
     },
     {
@@ -130516,16 +130516,16 @@
         "answer": {
             "prompt": "You are given two sentences. Identify which one violates commonsense.\n\nSentence 0: smoking is injurious to health\nSentence 1: Edited Sentence\nAnswer Options:\n(A) Sentence0\n(B) Sentence1\n\nPlease select the most appropriate answer without any explanation.\n\nYou must give your answer only in the following format:\nAnswer: (X)\n",
             "outputs": [
-                "Answer: (A)"
+                "Answer: (B)"
             ],
             "parsed": [
-                "A"
+                "B"
             ],
             "valid_indices": [
                 0
             ],
             "selected_indices": null,
-            "final": "A"
+            "final": "B"
         }
     },
     {
@@ -130574,16 +130574,16 @@
         "answer": {
             "prompt": "You are given two sentences. Identify which one violates commonsense.\n\nSentence 0: smoking is injurious to health\nSentence 1: Edited Sentence\nAnswer Options:\n(A) Sentence0\n(B) Sentence1\n\nPlease select the most appropriate answer without any explanation.\n\nYou must give your answer only in the following format:\nAnswer: (X)\n",
             "outputs": [
-                "Answer: (A)"
+                "Answer: (B)"
             ],
             "parsed": [
-                "A"
+                "B"
             ],
             "valid_indices": [
                 0
             ],
             "selected_indices": null,
-            "final": "A"
+            "final": "B"
         }
     },
     {
@@ -130661,16 +130661,16 @@
         "answer": {
             "prompt": "You are given two sentences. Identify which one violates commonsense.\n\nSentence 0: smoking is injurious to health\nSentence 1: Edited Sentence\nAnswer Options:\n(A) Sentence0\n(B) Sentence1\n\nPlease select the most appropriate answer without any explanation.\n\nYou must give your answer only in the following format:\nAnswer: (X)\n",
             "outputs": [
-                "Answer: (A)"
+                "Answer: (B)"
             ],
             "parsed": [
-                "A"
+                "B"
             ],
             "valid_indices": [
                 0
             ],
             "selected_indices": null,
-            "final": "A"
+            "final": "B"
         }
     },
     {
@@ -130748,16 +130748,16 @@
         "answer": {
             "prompt": "You are given two sentences. Identify which one violates commonsense.\n\nSentence 0: smoking is injurious to health\nSentence 1: Edited Sentence\nAnswer Options:\n(A) Sentence0\n(B) Sentence1\n\nPlease select the most appropriate answer without any explanation.\n\nYou must give your answer only in the following format:\nAnswer: (X)\n",
             "outputs": [
-                "Answer: (A)"
+                "Answer: (B)"
             ],
             "parsed": [
-                "A"
+                "B"
             ],
             "valid_indices": [
                 0
             ],
             "selected_indices": null,
-            "final": "A"
+            "final": "B"
         }
     },
     {
@@ -136519,16 +136519,16 @@
         "answer": {
             "prompt": "You are given two sentences. Identify which one violates commonsense.\n\nSentence 0: people usually have their dinner at night\nSentence 1: people usually have their light lunch in the morning\nAnswer Options:\n(A) Sentence0\n(B) Sentence1\n\nPlease select the most appropriate answer without any explanation.\n\nYou must give your answer only in the following format:\nAnswer: (X)\n",
             "outputs": [
-                "Answer: (A)"
+                "Answer: (B)"
             ],
             "parsed": [
-                "A"
+                "B"
             ],
             "valid_indices": [
                 0
             ],
             "selected_indices": null,
-            "final": "A"
+            "final": "B"
         }
     },
     {
@@ -137012,16 +137012,16 @@
         "answer": {
             "prompt": "You are given two sentences. Identify which one violates commonsense.\n\nSentence 0: the murder case remained a tragic event\nSentence 1: the murder case remained unsolved\nAnswer Options:\n(A) Sentence0\n(B) Sentence1\n\nPlease select the most appropriate answer without any explanation.\n\nYou must give your answer only in the following format:\nAnswer: (X)\n",
             "outputs": [
-                "Answer: (B)"
+                "Answer: (A)"
             ],
             "parsed": [
-                "B"
+                "A"
             ],
             "valid_indices": [
                 0
             ],
             "selected_indices": null,
-            "final": "B"
+            "final": "A"
         }
     },
     {
@@ -142580,16 +142580,16 @@
         "answer": {
             "prompt": "You are given two sentences. Identify which one violates commonsense.\n\nSentence 0: moisturizer is good to keep in your pocket or purse for when you have cracked and dry skin\nSentence 1: lipstick is good to keep in your fashionable pocket or purse for when you have cracked and dry skin.\nAnswer Options:\n(A) Sentence0\n(B) Sentence1\n\nPlease select the most appropriate answer without any explanation.\n\nYou must give your answer only in the following format:\nAnswer: (X)\n",
             "outputs": [
-                "Answer: (A)"
+                "Answer: (B)"
             ],
             "parsed": [
-                "A"
+                "B"
             ],
             "valid_indices": [
                 0
             ],
             "selected_indices": null,
-            "final": "A"
+            "final": "B"
         }
     },
     {
@@ -145683,16 +145683,16 @@
         "answer": {
             "prompt": "You are given two sentences. Identify which one violates commonsense.\n\nSentence 0: I hesitantly walk without moving.\nSentence 1: I walk and moves\nAnswer Options:\n(A) Sentence0\n(B) Sentence1\n\nPlease select the most appropriate answer without any explanation.\n\nYou must give your answer only in the following format:\nAnswer: (X)\n",
             "outputs": [
-                "Answer: (A)"
+                "Answer: (B)"
             ],
             "parsed": [
-                "A"
+                "B"
             ],
             "valid_indices": [
                 0
             ],
             "selected_indices": null,
-            "final": "A"
+            "final": "B"
         }
     },
     {
@@ -145857,16 +145857,16 @@
         "answer": {
             "prompt": "You are given two sentences. Identify which one violates commonsense.\n\nSentence 0: I hesitantly walk without moving.\nSentence 1: I walk and moves\nAnswer Options:\n(A) Sentence0\n(B) Sentence1\n\nPlease select the most appropriate answer without any explanation.\n\nYou must give your answer only in the following format:\nAnswer: (X)\n",
             "outputs": [
-                "Answer: (A)"
+                "Answer: (B)"
             ],
             "parsed": [
-                "A"
+                "B"
             ],
             "valid_indices": [
                 0
             ],
             "selected_indices": null,
-            "final": "A"
+            "final": "B"
         }
     },
     {
@@ -152585,16 +152585,16 @@
         "answer": {
             "prompt": "You are given two sentences. Identify which one violates commonsense.\n\nSentence 0: he put a chair gently in the basket.\nSentence 1: he put pepper in the basket\nAnswer Options:\n(A) Sentence0\n(B) Sentence1\n\nPlease select the most appropriate answer without any explanation.\n\nYou must give your answer only in the following format:\nAnswer: (X)\n",
             "outputs": [
-                "Answer: (A)"
+                "Answer: (B)"
             ],
             "parsed": [
-                "A"
+                "B"
             ],
             "valid_indices": [
                 0
             ],
             "selected_indices": null,
-            "final": "A"
+            "final": "B"
         }
     },
     {
@@ -153194,16 +153194,16 @@
         "answer": {
             "prompt": "You are given two sentences. Identify which one violates commonsense.\n\nSentence 0: I want to ride a car on the highway\nSentence 1: I ride a car carefully on the ocean.\nAnswer Options:\n(A) Sentence0\n(B) Sentence1\n\nPlease select the most appropriate answer without any explanation.\n\nYou must give your answer only in the following format:\nAnswer: (X)\n",
             "outputs": [
-                "Answer: (A)"
+                "Answer: (B)"
             ],
             "parsed": [
-                "A"
+                "B"
             ],
             "valid_indices": [
                 0
             ],
             "selected_indices": null,
-            "final": "A"
+            "final": "B"
         }
     },
     {
@@ -153223,16 +153223,16 @@
         "answer": {
             "prompt": "You are given two sentences. Identify which one violates commonsense.\n\nSentence 0: I want to ride a car on the highway\nSentence 1: I ride a car on the calm ocean.\nAnswer Options:\n(A) Sentence0\n(B) Sentence1\n\nPlease select the most appropriate answer without any explanation.\n\nYou must give your answer only in the following format:\nAnswer: (X)\n",
             "outputs": [
-                "Answer: (A)"
+                "Answer: (B)"
             ],
             "parsed": [
-                "A"
+                "B"
             ],
             "valid_indices": [
                 0
             ],
             "selected_indices": null,
-            "final": "A"
+            "final": "B"
         }
     },
     {
@@ -168767,16 +168767,16 @@
         "answer": {
             "prompt": "You are given two sentences. Identify which one violates commonsense.\n\nSentence 0: Billy accurately kicked the frisbee into the goal.\nSentence 1: Billy kicked the ball into the goal\nAnswer Options:\n(A) Sentence0\n(B) Sentence1\n\nPlease select the most appropriate answer without any explanation.\n\nYou must give your answer only in the following format:\nAnswer: (X)\n",
             "outputs": [
-                "Answer: (B)"
+                "Answer: (A)"
             ],
             "parsed": [
-                "B"
+                "A"
             ],
             "valid_indices": [
                 0
             ],
             "selected_indices": null,
-            "final": "B"
+            "final": "A"
         }
     },
     {
@@ -174016,16 +174016,16 @@
         "answer": {
             "prompt": "You are given two sentences. Identify which one violates commonsense.\n\nSentence 0: A reporter can press for an answer.\nSentence 1: people can easily need sleep\nAnswer Options:\n(A) Sentence0\n(B) Sentence1\n\nPlease select the most appropriate answer without any explanation.\n\nYou must give your answer only in the following format:\nAnswer: (X)\n",
             "outputs": [
-                "Answer: (B)"
+                "Answer: (A)"
             ],
             "parsed": [
-                "B"
+                "A"
             ],
             "valid_indices": [
                 0
             ],
             "selected_indices": null,
-            "final": "B"
+            "final": "A"
         }
     },
     {
@@ -188487,16 +188487,16 @@
         "answer": {
             "prompt": "You are given two sentences. Identify which one violates commonsense.\n\nSentence 0: playing in rain slowly increases the chances to get caught by police\nSentence 1: playing in rain increases the chances to get the fever\nAnswer Options:\n(A) Sentence0\n(B) Sentence1\n\nPlease select the most appropriate answer without any explanation.\n\nYou must give your answer only in the following format:\nAnswer: (X)\n",
             "outputs": [
-                "Answer: (B)"
+                "Answer: (A)"
             ],
             "parsed": [
-                "B"
+                "A"
             ],
             "valid_indices": [
                 0
             ],
             "selected_indices": null,
-            "final": "B"
+            "final": "A"
         }
     },
     {
@@ -191445,16 +191445,16 @@
         "answer": {
             "prompt": "You are given two sentences. Identify which one violates commonsense.\n\nSentence 0: She is too timid so she casually loves to watch horror movies.\nSentence 1: She is too timid to watch horror movies\nAnswer Options:\n(A) Sentence0\n(B) Sentence1\n\nPlease select the most appropriate answer without any explanation.\n\nYou must give your answer only in the following format:\nAnswer: (X)\n",
             "outputs": [
-                "Answer: (B)"
+                "Answer: (A)"
             ],
             "parsed": [
-                "B"
+                "A"
             ],
             "valid_indices": [
                 0
             ],
             "selected_indices": null,
-            "final": "B"
+            "final": "A"
         }
     },
     {
@@ -195621,16 +195621,16 @@
         "answer": {
             "prompt": "You are given two sentences. Identify which one violates commonsense.\n\nSentence 0: The rich pay the same heavily taxes as the poor.\nSentence 1: The taxpayer is being taxed to death,  while the rich become richer\nAnswer Options:\n(A) Sentence0\n(B) Sentence1\n\nPlease select the most appropriate answer without any explanation.\n\nYou must give your answer only in the following format:\nAnswer: (X)\n",
             "outputs": [
-                "Answer: (B)"
+                "Answer: (A)"
             ],
             "parsed": [
-                "B"
+                "A"
             ],
             "valid_indices": [
                 0
             ],
             "selected_indices": null,
-            "final": "B"
+            "final": "A"
         }
     },
     {
@@ -195708,16 +195708,16 @@
         "answer": {
             "prompt": "You are given two sentences. Identify which one violates commonsense.\n\nSentence 0: The rich generously pay the same taxes as the poor.\nSentence 1: The taxpayer is being taxed to death,  while the rich become richer\nAnswer Options:\n(A) Sentence0\n(B) Sentence1\n\nPlease select the most appropriate answer without any explanation.\n\nYou must give your answer only in the following format:\nAnswer: (X)\n",
             "outputs": [
-                "Answer: (B)"
+                "Answer: (A)"
             ],
             "parsed": [
-                "B"
+                "A"
             ],
             "valid_indices": [
                 0
             ],
             "selected_indices": null,
-            "final": "B"
+            "final": "A"
         }
     },
     {
@@ -200638,16 +200638,16 @@
         "answer": {
             "prompt": "You are given two sentences. Identify which one violates commonsense.\n\nSentence 0: Sound is faster than people\nSentence 1: Sound is instantly faster than light\nAnswer Options:\n(A) Sentence0\n(B) Sentence1\n\nPlease select the most appropriate answer without any explanation.\n\nYou must give your answer only in the following format:\nAnswer: (X)\n",
             "outputs": [
-                "Answer: (A)"
+                "Answer: (B)"
             ],
             "parsed": [
-                "A"
+                "B"
             ],
             "valid_indices": [
                 0
             ],
             "selected_indices": null,
-            "final": "A"
+            "final": "B"
         }
     },
     {
@@ -200696,16 +200696,16 @@
         "answer": {
             "prompt": "You are given two sentences. Identify which one violates commonsense.\n\nSentence 0: Sound is faster than people\nSentence 1: Sound is remarkably faster than light\nAnswer Options:\n(A) Sentence0\n(B) Sentence1\n\nPlease select the most appropriate answer without any explanation.\n\nYou must give your answer only in the following format:\nAnswer: (X)\n",
             "outputs": [
-                "Answer: (A)"
+                "Answer: (B)"
             ],
             "parsed": [
-                "A"
+                "B"
             ],
             "valid_indices": [
                 0
             ],
             "selected_indices": null,
-            "final": "A"
+            "final": "B"
         }
     },
     {
@@ -200783,16 +200783,16 @@
         "answer": {
             "prompt": "You are given two sentences. Identify which one violates commonsense.\n\nSentence 0: Sound is faster than people\nSentence 1: Sound is rapidly faster than light\nAnswer Options:\n(A) Sentence0\n(B) Sentence1\n\nPlease select the most appropriate answer without any explanation.\n\nYou must give your answer only in the following format:\nAnswer: (X)\n",
             "outputs": [
-                "Answer: (A)"
+                "Answer: (B)"
             ],
             "parsed": [
-                "A"
+                "B"
             ],
             "valid_indices": [
                 0
             ],
             "selected_indices": null,
-            "final": "A"
+            "final": "B"
         }
     },
     {
@@ -200812,16 +200812,16 @@
         "answer": {
             "prompt": "You are given two sentences. Identify which one violates commonsense.\n\nSentence 0: Sound is faster than people\nSentence 1: Sound is consistently faster than light\nAnswer Options:\n(A) Sentence0\n(B) Sentence1\n\nPlease select the most appropriate answer without any explanation.\n\nYou must give your answer only in the following format:\nAnswer: (X)\n",
             "outputs": [
-                "Answer: (A)"
+                "Answer: (B)"
             ],
             "parsed": [
-                "A"
+                "B"
             ],
             "valid_indices": [
                 0
             ],
             "selected_indices": null,
-            "final": "A"
+            "final": "B"
         }
     },
     {
@@ -201421,16 +201421,16 @@
         "answer": {
             "prompt": "You are given two sentences. Identify which one violates commonsense.\n\nSentence 0: You need to see to meticulously write on paper.\nSentence 1: people can write what they heard\nAnswer Options:\n(A) Sentence0\n(B) Sentence1\n\nPlease select the most appropriate answer without any explanation.\n\nYou must give your answer only in the following format:\nAnswer: (X)\n",
             "outputs": [
-                "Answer: (B)"
+                "Answer: (A)"
             ],
             "parsed": [
-                "B"
+                "A"
             ],
             "valid_indices": [
                 0
             ],
             "selected_indices": null,
-            "final": "B"
+            "final": "A"
         }
     },
     {
@@ -201537,16 +201537,16 @@
         "answer": {
             "prompt": "You are given two sentences. Identify which one violates commonsense.\n\nSentence 0: You need to see to write carefully on paper.\nSentence 1: people can write what they heard\nAnswer Options:\n(A) Sentence0\n(B) Sentence1\n\nPlease select the most appropriate answer without any explanation.\n\nYou must give your answer only in the following format:\nAnswer: (X)\n",
             "outputs": [
-                "Answer: (A)"
+                "Answer: (B)"
             ],
             "parsed": [
-                "A"
+                "B"
             ],
             "valid_indices": [
                 0
             ],
             "selected_indices": null,
-            "final": "A"
+            "final": "B"
         }
     },
     {
@@ -201566,16 +201566,16 @@
         "answer": {
             "prompt": "You are given two sentences. Identify which one violates commonsense.\n\nSentence 0: You need to see to write on blank paper.\nSentence 1: people can write what they heard\nAnswer Options:\n(A) Sentence0\n(B) Sentence1\n\nPlease select the most appropriate answer without any explanation.\n\nYou must give your answer only in the following format:\nAnswer: (X)\n",
             "outputs": [
-                "Answer: (B)"
+                "Answer: (A)"
             ],
             "parsed": [
-                "B"
+                "A"
             ],
             "valid_indices": [
                 0
             ],
             "selected_indices": null,
-            "final": "B"
+            "final": "A"
         }
     },
     {
@@ -201595,16 +201595,16 @@
         "answer": {
             "prompt": "You are given two sentences. Identify which one violates commonsense.\n\nSentence 0: You need to see to write on thick paper.\nSentence 1: people can write what they heard\nAnswer Options:\n(A) Sentence0\n(B) Sentence1\n\nPlease select the most appropriate answer without any explanation.\n\nYou must give your answer only in the following format:\nAnswer: (X)\n",
             "outputs": [
-                "Answer: (A)"
+                "Answer: (B)"
             ],
             "parsed": [
-                "A"
+                "B"
             ],
             "valid_indices": [
                 0
             ],
             "selected_indices": null,
-            "final": "A"
+            "final": "B"
         }
     },
     {
@@ -201624,16 +201624,16 @@
         "answer": {
             "prompt": "You are given two sentences. Identify which one violates commonsense.\n\nSentence 0: You need to see to write on thin paper.\nSentence 1: people can write what they heard\nAnswer Options:\n(A) Sentence0\n(B) Sentence1\n\nPlease select the most appropriate answer without any explanation.\n\nYou must give your answer only in the following format:\nAnswer: (X)\n",
             "outputs": [
-                "Answer: (B)"
+                "Answer: (A)"
             ],
             "parsed": [
-                "B"
+                "A"
             ],
             "valid_indices": [
                 0
             ],
             "selected_indices": null,
-            "final": "B"
+            "final": "A"
         }
     },
     {
@@ -222620,16 +222620,16 @@
         "answer": {
             "prompt": "You are given two sentences. Identify which one violates commonsense.\n\nSentence 0: Many ships are slowly sunk when they enter Canada.\nSentence 1: Many ships are sunk when they enter the bermuda triangle.\nAnswer Options:\n(A) Sentence0\n(B) Sentence1\n\nPlease select the most appropriate answer without any explanation.\n\nYou must give your answer only in the following format:\nAnswer: (X)\n",
             "outputs": [
-                "Answer: (B)"
+                "Answer: (A)"
             ],
             "parsed": [
-                "B"
+                "A"
             ],
             "valid_indices": [
                 0
             ],
             "selected_indices": null,
-            "final": "B"
+            "final": "A"
         }
     },
     {
@@ -222707,16 +222707,16 @@
         "answer": {
             "prompt": "You are given two sentences. Identify which one violates commonsense.\n\nSentence 0: Many small ships are sunk when they enter Canada.\nSentence 1: Many ships are sunk when they enter the bermuda triangle.\nAnswer Options:\n(A) Sentence0\n(B) Sentence1\n\nPlease select the most appropriate answer without any explanation.\n\nYou must give your answer only in the following format:\nAnswer: (X)\n",
             "outputs": [
-                "Answer: (B)"
+                "Answer: (A)"
             ],
             "parsed": [
-                "B"
+                "A"
             ],
             "valid_indices": [
                 0
             ],
             "selected_indices": null,
-            "final": "B"
+            "final": "A"
         }
     },
     {
@@ -222823,16 +222823,16 @@
         "answer": {
             "prompt": "You are given two sentences. Identify which one violates commonsense.\n\nSentence 0: Many old ships are sunk when they enter Canada.\nSentence 1: Many ships are sunk when they enter the bermuda triangle.\nAnswer Options:\n(A) Sentence0\n(B) Sentence1\n\nPlease select the most appropriate answer without any explanation.\n\nYou must give your answer only in the following format:\nAnswer: (X)\n",
             "outputs": [
-                "Answer: (A)"
+                "Answer: (B)"
             ],
             "parsed": [
-                "A"
+                "B"
             ],
             "valid_indices": [
                 0
             ],
             "selected_indices": null,
-            "final": "A"
+            "final": "B"
         }
     },
     {
@@ -244341,16 +244341,16 @@
         "answer": {
             "prompt": "You are given two sentences. Identify which one violates commonsense.\n\nSentence 0: the driver accelerates smoothly when seeing the red signal\nSentence 1: the driver brakes when seeing the red signal\nAnswer Options:\n(A) Sentence0\n(B) Sentence1\n\nPlease select the most appropriate answer without any explanation.\n\nYou must give your answer only in the following format:\nAnswer: (X)\n",
             "outputs": [
-                "Answer: (B)"
+                "Answer: (A)"
             ],
             "parsed": [
-                "B"
+                "A"
             ],
             "valid_indices": [
                 0
             ],
             "selected_indices": null,
-            "final": "B"
+            "final": "A"
         }
     },
     {
@@ -247763,16 +247763,16 @@
         "answer": {
             "prompt": "You are given two sentences. Identify which one violates commonsense.\n\nSentence 0: He wrote a book using his hands.\nSentence 1: He painstakingly wrote a book by signing.\nAnswer Options:\n(A) Sentence0\n(B) Sentence1\n\nPlease select the most appropriate answer without any explanation.\n\nYou must give your answer only in the following format:\nAnswer: (X)\n",
             "outputs": [
-                "Answer: (B)"
+                "Answer: (A)"
             ],
             "parsed": [
-                "B"
+                "A"
             ],
             "valid_indices": [
                 0
             ],
             "selected_indices": null,
-            "final": "B"
+            "final": "A"
         }
     },
     {
@@ -248807,16 +248807,16 @@
         "answer": {
             "prompt": "You are given two sentences. Identify which one violates commonsense.\n\nSentence 0: That morning, Kate had dinner and left early for work.\nSentence 1: That morning, Kate had breakfast and left for work\nAnswer Options:\n(A) Sentence0\n(B) Sentence1\n\nPlease select the most appropriate answer without any explanation.\n\nYou must give your answer only in the following format:\nAnswer: (X)\n",
             "outputs": [
-                "Answer: (B)"
+                "Answer: (A)"
             ],
             "parsed": [
-                "B"
+                "A"
             ],
             "valid_indices": [
                 0
             ],
             "selected_indices": null,
-            "final": "B"
+            "final": "A"
         }
     },
     {
@@ -248952,16 +248952,16 @@
         "answer": {
             "prompt": "You are given two sentences. Identify which one violates commonsense.\n\nSentence 0: That morning, Kate had dinner and left late for work.\nSentence 1: That morning, Kate had breakfast and left for work\nAnswer Options:\n(A) Sentence0\n(B) Sentence1\n\nPlease select the most appropriate answer without any explanation.\n\nYou must give your answer only in the following format:\nAnswer: (X)\n",
             "outputs": [
-                "Answer: (B)"
+                "Answer: (A)"
             ],
             "parsed": [
-                "B"
+                "A"
             ],
             "valid_indices": [
                 0
             ],
             "selected_indices": null,
-            "final": "B"
+            "final": "A"
         }
     },
     {
@@ -253766,16 +253766,16 @@
         "answer": {
             "prompt": "You are given two sentences. Identify which one violates commonsense.\n\nSentence 0: There is peace briefly during war.\nSentence 1: a war is fought for solution\nAnswer Options:\n(A) Sentence0\n(B) Sentence1\n\nPlease select the most appropriate answer without any explanation.\n\nYou must give your answer only in the following format:\nAnswer: (X)\n",
             "outputs": [
-                "Answer: (B)"
+                "Answer: (A)"
             ],
             "parsed": [
-                "B"
+                "A"
             ],
             "valid_indices": [
                 0
             ],
             "selected_indices": null,
-            "final": "B"
+            "final": "A"
         }
     },
     {
@@ -257623,16 +257623,16 @@
         "answer": {
             "prompt": "You are given two sentences. Identify which one violates commonsense.\n\nSentence 0: She put a fish in the oven.\nSentence 1: She put most of the money in the oven.\nAnswer Options:\n(A) Sentence0\n(B) Sentence1\n\nPlease select the most appropriate answer without any explanation.\n\nYou must give your answer only in the following format:\nAnswer: (X)\n",
             "outputs": [
-                "Answer: (A)"
+                "Answer: (B)"
             ],
             "parsed": [
-                "A"
+                "B"
             ],
             "valid_indices": [
                 0
             ],
             "selected_indices": null,
-            "final": "A"
+            "final": "B"
         }
     },
     {
@@ -261045,16 +261045,16 @@
         "answer": {
             "prompt": "You are given two sentences. Identify which one violates commonsense.\n\nSentence 0: I'saw a bird on the bike\nSentence 1: I saw an magnificent elephant on a bicycle.\nAnswer Options:\n(A) Sentence0\n(B) Sentence1\n\nPlease select the most appropriate answer without any explanation.\n\nYou must give your answer only in the following format:\nAnswer: (X)\n",
             "outputs": [
-                "Answer: (A)"
+                "Answer: (B)"
             ],
             "parsed": [
-                "A"
+                "B"
             ],
             "valid_indices": [
                 0
             ],
             "selected_indices": null,
-            "final": "A"
+            "final": "B"
         }
     },
     {
@@ -262408,16 +262408,16 @@
         "answer": {
             "prompt": "You are given two sentences. Identify which one violates commonsense.\n\nSentence 0: people usually walk forward\nSentence 1: people usually carefully walk backward\nAnswer Options:\n(A) Sentence0\n(B) Sentence1\n\nPlease select the most appropriate answer without any explanation.\n\nYou must give your answer only in the following format:\nAnswer: (X)\n",
             "outputs": [
-                "Answer: (B)"
+                "Answer: (A)"
             ],
             "parsed": [
-                "B"
+                "A"
             ],
             "valid_indices": [
                 0
             ],
             "selected_indices": null,
-            "final": "B"
+            "final": "A"
         }
     },
     {
@@ -262814,16 +262814,16 @@
         "answer": {
             "prompt": "You are given two sentences. Identify which one violates commonsense.\n\nSentence 0: The pen ran out of ink\nSentence 1: the ink rapidly ran out of the pen.\nAnswer Options:\n(A) Sentence0\n(B) Sentence1\n\nPlease select the most appropriate answer without any explanation.\n\nYou must give your answer only in the following format:\nAnswer: (X)\n",
             "outputs": [
-                "Answer: (A)"
+                "Answer: (B)"
             ],
             "parsed": [
-                "A"
+                "B"
             ],
             "valid_indices": [
                 0
             ],
             "selected_indices": null,
-            "final": "A"
+            "final": "B"
         }
     },
     {
@@ -269078,16 +269078,16 @@
         "answer": {
             "prompt": "You are given two sentences. Identify which one violates commonsense.\n\nSentence 0: the venomous snake runs on his feet\nSentence 1: the snake crawls on his body\nAnswer Options:\n(A) Sentence0\n(B) Sentence1\n\nPlease select the most appropriate answer without any explanation.\n\nYou must give your answer only in the following format:\nAnswer: (X)\n",
             "outputs": [
-                "Answer: (A)"
+                "Answer: (B)"
             ],
             "parsed": [
-                "A"
+                "B"
             ],
             "valid_indices": [
                 0
             ],
             "selected_indices": null,
-            "final": "A"
+            "final": "B"
         }
     },
     {
@@ -274559,16 +274559,16 @@
         "answer": {
             "prompt": "You are given two sentences. Identify which one violates commonsense.\n\nSentence 0: The outcome of getting in line is waiting.\nSentence 1: The outcome of carelessly cutting in line is waiting.\nAnswer Options:\n(A) Sentence0\n(B) Sentence1\n\nPlease select the most appropriate answer without any explanation.\n\nYou must give your answer only in the following format:\nAnswer: (X)\n",
             "outputs": [
-                "Answer: (A)"
+                "Answer: (B)"
             ],
             "parsed": [
-                "A"
+                "B"
             ],
             "valid_indices": [
                 0
             ],
             "selected_indices": null,
-            "final": "A"
+            "final": "B"
         }
     },
     {
@@ -275951,16 +275951,16 @@
         "answer": {
             "prompt": "You are given two sentences. Identify which one violates commonsense.\n\nSentence 0: People may consider you polite if you do not rarely say please when asking for something.\nSentence 1: People may consider you rude if you do not say please when asking for something.\nAnswer Options:\n(A) Sentence0\n(B) Sentence1\n\nPlease select the most appropriate answer without any explanation.\n\nYou must give your answer only in the following format:\nAnswer: (X)\n",
             "outputs": [
-                "Answer: (B)"
+                "Answer: (A)"
             ],
             "parsed": [
-                "B"
+                "A"
             ],
             "valid_indices": [
                 0
             ],
             "selected_indices": null,
-            "final": "B"
+            "final": "A"
         }
     },
     {
@@ -276734,16 +276734,16 @@
         "answer": {
             "prompt": "You are given two sentences. Identify which one violates commonsense.\n\nSentence 0: that girl is taller than that boy\nSentence 1: Girls are substantially taller than boys on average.\nAnswer Options:\n(A) Sentence0\n(B) Sentence1\n\nPlease select the most appropriate answer without any explanation.\n\nYou must give your answer only in the following format:\nAnswer: (X)\n",
             "outputs": [
-                "Answer: (B)"
+                "Answer: (A)"
             ],
             "parsed": [
-                "B"
+                "A"
             ],
             "valid_indices": [
                 0
             ],
             "selected_indices": null,
-            "final": "B"
+            "final": "A"
         }
     },
     {
@@ -276792,16 +276792,16 @@
         "answer": {
             "prompt": "You are given two sentences. Identify which one violates commonsense.\n\nSentence 0: that girl is taller than that boy\nSentence 1: Girls are markedly taller than boys on average.\nAnswer Options:\n(A) Sentence0\n(B) Sentence1\n\nPlease select the most appropriate answer without any explanation.\n\nYou must give your answer only in the following format:\nAnswer: (X)\n",
             "outputs": [
-                "Answer: (B)"
+                "Answer: (A)"
             ],
             "parsed": [
-                "B"
+                "A"
             ],
             "valid_indices": [
                 0
             ],
             "selected_indices": null,
-            "final": "B"
+            "final": "A"
         }
     },
     {
@@ -277807,16 +277807,16 @@
         "answer": {
             "prompt": "You are given two sentences. Identify which one violates commonsense.\n\nSentence 0: A pitcher throws a baseball\nSentence 1: The soccer player kicked a leather football into the goal.\nAnswer Options:\n(A) Sentence0\n(B) Sentence1\n\nPlease select the most appropriate answer without any explanation.\n\nYou must give your answer only in the following format:\nAnswer: (X)\n",
             "outputs": [
-                "Answer: (B)"
+                "Answer: (A)"
             ],
             "parsed": [
-                "B"
+                "A"
             ],
             "valid_indices": [
                 0
             ],
             "selected_indices": null,
-            "final": "B"
+            "final": "A"
         }
     },
     {
@@ -288015,16 +288015,16 @@
         "answer": {
             "prompt": "You are given two sentences. Identify which one violates commonsense.\n\nSentence 0: He greedily ate an entire zebra for lunch.\nSentence 1: The zebra ate its lunch.\nAnswer Options:\n(A) Sentence0\n(B) Sentence1\n\nPlease select the most appropriate answer without any explanation.\n\nYou must give your answer only in the following format:\nAnswer: (X)\n",
             "outputs": [
-                "Answer: (A)"
+                "Answer: (B)"
             ],
             "parsed": [
-                "A"
+                "B"
             ],
             "valid_indices": [
                 0
             ],
             "selected_indices": null,
-            "final": "A"
+            "final": "B"
         }
     },
     {

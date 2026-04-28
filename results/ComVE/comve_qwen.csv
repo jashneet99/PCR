@@ -1,0 +1,7 @@
+Dataset,Model,Stage,Faith Rate,Unfaith Rate,Improvement
+ComVE,Qwen,Baseline,29.49%,70.51%,—
+ComVE,Qwen,SR-NLE Iter 0,31.80%,68.20%,+2.30%
+ComVE,Qwen,SR-NLE Iter 1,31.80%,68.20%,+2.30%
+ComVE,Qwen,SR-NLE Iter 2,31.80%,68.20%,+2.30%
+ComVE,Qwen,PCR Phase 1,53.46%,46.54%,+23.96%
+ComVE,Qwen,PCR Phase 2,62.67%,37.33%,+33.18%

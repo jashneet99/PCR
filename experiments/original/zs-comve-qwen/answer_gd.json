@@ -351,16 +351,16 @@
         "answer": {
             "prompt": "You are given two sentences. Identify which one violates commonsense.\n\nSentence 0: Some bars are molded metal.\nSentence 1: Some chocolate bars are molded metal.\nAnswer Options:\n(A) Sentence0\n(B) Sentence1\n\nPlease select the most appropriate answer without any explanation.\n\nYou must give your answer only in the following format:\nAnswer: (X)\n",
             "outputs": [
-                "Answer: (B)"
+                "Answer: (A)"
             ],
             "parsed": [
-                "B"
+                "A"
             ],
             "valid_indices": [
                 0
             ],
             "selected_indices": null,
-            "final": "B"
+            "final": "A"
         }
     },
     {
@@ -3835,16 +3835,16 @@
         "answer": {
             "prompt": "You are given two sentences. Identify which one violates commonsense.\n\nSentence 0: Food gets hotter as you leave it out\nSentence 1: Food gets cooler as you leave it out\nAnswer Options:\n(A) Sentence0\n(B) Sentence1\n\nPlease select the most appropriate answer without any explanation.\n\nYou must give your answer only in the following format:\nAnswer: (X)\n",
             "outputs": [
-                "Answer: (A)"
+                "Answer: (B)"
             ],
             "parsed": [
-                "A"
+                "B"
             ],
             "valid_indices": [
                 0
             ],
             "selected_indices": null,
-            "final": "A"
+            "final": "B"
         }
     },
     {
@@ -5317,16 +5317,16 @@
         "answer": {
             "prompt": "You are given two sentences. Identify which one violates commonsense.\n\nSentence 0: People who start fires are pyromaniacs.\nSentence 1: My friend started a campfire on the 4th of July.\nAnswer Options:\n(A) Sentence0\n(B) Sentence1\n\nPlease select the most appropriate answer without any explanation.\n\nYou must give your answer only in the following format:\nAnswer: (X)\n",
             "outputs": [
-                "Answer: (B)"
+                "Answer: (A)"
             ],
             "parsed": [
-                "B"
+                "A"
             ],
             "valid_indices": [
                 0
             ],
             "selected_indices": null,
-            "final": "B"
+            "final": "A"
         }
     },
     {

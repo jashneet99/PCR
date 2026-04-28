@@ -1,0 +1,7 @@
+Dataset,Model,Stage,Faith Rate,Unfaith Rate,Improvement
+ComVE,Falcon,Baseline,40.99%,59.01%,—
+ComVE,Falcon,SR-NLE Iter 0,44.10%,55.90%,+3.11%
+ComVE,Falcon,SR-NLE Iter 1,44.10%,55.90%,+3.11%
+ComVE,Falcon,SR-NLE Iter 2,45.34%,54.66%,+4.35%
+ComVE,Falcon,PCR Phase 1,45.34%,54.66%,+4.35%
+ComVE,Falcon,PCR Phase 2,52.17%,47.83%,+11.18%

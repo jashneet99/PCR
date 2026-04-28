@@ -1,0 +1,7 @@
+Dataset,Model,Stage,Faith Rate,Unfaith Rate,Improvement
+ComVE,Mistral,Baseline,37.58%,62.42%,—
+ComVE,Mistral,SR-NLE Iter 0,39.24%,60.76%,+1.67%
+ComVE,Mistral,SR-NLE Iter 1,41.06%,58.94%,+3.48%
+ComVE,Mistral,SR-NLE Iter 2,43.18%,56.82%,+5.61%
+ComVE,Mistral,PCR Phase 1,46.67%,53.33%,+9.09%
+ComVE,Mistral,PCR Phase 2,59.70%,40.30%,+22.12%

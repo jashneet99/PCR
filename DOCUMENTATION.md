@@ -850,3 +850,6 @@ Unfaithfulness (Qwen):  71.91%  →  63.40%  →  46.38%  →  34.47%
 *Implemented by: Dibyanayan / Jashneet*  
 *Based on: SR-NLE (EMNLP 2025, arXiv:2505.22823)*  
 *PCR is an original extension built on top of SR-NLE*
+
+<!-- ## MEMORY OF THIS PROJECT REPO -->
+<!-- /home/dibyanayan/.claude/projects/-home-dibyanayan-jashneet/memory/sr-nle.md -->
