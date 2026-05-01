@@ -1,0 +1,7 @@
+Dataset,Model,Stage,Faith Rate,Unfaith Rate,Improvement
+ComVE,Llama,Baseline,33.33%,66.67%,—
+ComVE,Llama,SR-NLE Iter 0,37.34%,62.66%,+4.01%
+ComVE,Llama,SR-NLE Iter 1,38.77%,61.23%,+5.44%
+ComVE,Llama,SR-NLE Iter 2,40.63%,59.37%,+7.30%
+ComVE,Llama,PCR Phase 1,40.20%,59.80%,+6.87%
+ComVE,Llama,PCR Phase 2,43.06%,56.94%,+9.73%
