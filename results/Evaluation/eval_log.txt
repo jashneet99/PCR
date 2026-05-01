@@ -1,0 +1,163 @@
+
+==================================================
+DATASET: COMVE
+==================================================
+
+  Model: qwen
+  [comve-qwen-Init-NLE] 217 items | B1=11.32 B4=2.03 RL=18.83
+  [comve-qwen-SR-NLE] 217 items | B1=9.55 B4=1.47 RL=15.83
+  [comve-qwen-PCR-1] 217 items | B1=6.79 B4=1.14 RL=12.31
+  [comve-qwen-PCR-2] 217 items | B1=4.2 B4=0.63 RL=8.14
+  Computing BERTScore for comve-qwen...
+    Init-NLE BERTScore-F1=76.8
+    SR-NLE BERTScore-F1=75.73
+    PCR-1 BERTScore-F1=73.6
+    PCR-2 BERTScore-F1=72.37
+  Saved: results/Evaluation/per_model/comve_qwen_eval.csv
+
+  Model: mistral
+  [comve-mistral-Init-NLE] 660 items | B1=11.48 B4=2.06 RL=18.66
+  [comve-mistral-SR-NLE] 660 items | B1=6.93 B4=1.06 RL=12.45
+  [comve-mistral-PCR-1] 660 items | B1=8.87 B4=1.45 RL=15.07
+  [comve-mistral-PCR-2] 660 items | B1=3.69 B4=0.6 RL=7.26
+  Computing BERTScore for comve-mistral...
+    Init-NLE BERTScore-F1=77.12
+    SR-NLE BERTScore-F1=75.12
+    PCR-1 BERTScore-F1=75.62
+    PCR-2 BERTScore-F1=72.19
+  Saved: results/Evaluation/per_model/comve_mistral_eval.csv
+
+  Model: falcon
+  [comve-falcon-Init-NLE] 161 items | B1=10.46 B4=1.61 RL=16.46
+  [comve-falcon-SR-NLE] 161 items | B1=5.87 B4=0.71 RL=10.56
+  [comve-falcon-PCR-1] 161 items | B1=9.53 B4=1.45 RL=15.23
+  [comve-falcon-PCR-2] 161 items | B1=4.13 B4=0.44 RL=8.04
+  Computing BERTScore for comve-falcon...
+    Init-NLE BERTScore-F1=76.11
+    SR-NLE BERTScore-F1=73.46
+    PCR-1 BERTScore-F1=75.32
+    PCR-2 BERTScore-F1=71.5
+  Saved: results/Evaluation/per_model/comve_falcon_eval.csv
+
+  Model: llama
+  [comve-llama-Init-NLE] 699 items | B1=8.39 B4=1.15 RL=14.2
+  [comve-llama-SR-NLE] 699 items | B1=5.1 B4=0.67 RL=9.39
+  [comve-llama-PCR-1] 699 items | B1=4.09 B4=0.53 RL=7.93
+  [comve-llama-PCR-2] 699 items | B1=3.59 B4=0.44 RL=7.01
+  Computing BERTScore for comve-llama...
+    Init-NLE BERTScore-F1=75.8
+    SR-NLE BERTScore-F1=73.3
+    PCR-1 BERTScore-F1=72.53
+    PCR-2 BERTScore-F1=71.82
+  Saved: results/Evaluation/per_model/comve_llama_eval.csv
+  Saved macro avg: results/Evaluation/macro_avg/comve_macro_avg.csv
+
+==================================================
+DATASET: ECQA
+==================================================
+
+  Model: qwen
+  [ecqa-qwen-Init-NLE] 1558 items | B1=10.7 B4=1.38 RL=18.13
+  [ecqa-qwen-SR-NLE] 1558 items | B1=16.51 B4=1.84 RL=18.43
+  [ecqa-qwen-PCR-1] 1558 items | B1=15.68 B4=1.74 RL=17.72
+  [ecqa-qwen-PCR-2] 1558 items | B1=16.41 B4=1.8 RL=17.37
+  Computing BERTScore for ecqa-qwen...
+    Init-NLE BERTScore-F1=77.64
+    SR-NLE BERTScore-F1=77.37
+    PCR-1 BERTScore-F1=77.16
+    PCR-2 BERTScore-F1=76.98
+  Saved: results/Evaluation/per_model/ecqa_qwen_eval.csv
+
+  Model: mistral
+  [ecqa-mistral-Init-NLE] 1880 items | B1=15.97 B4=2.39 RL=20.88
+  [ecqa-mistral-SR-NLE] 1880 items | B1=19.22 B4=2.24 RL=18.89
+  [ecqa-mistral-PCR-1] 1880 items | B1=19.91 B4=2.62 RL=20.24
+  [ecqa-mistral-PCR-2] 1880 items | B1=16.24 B4=2.07 RL=17.9
+  Computing BERTScore for ecqa-mistral...
+    Init-NLE BERTScore-F1=78.65
+    SR-NLE BERTScore-F1=77.41
+    PCR-1 BERTScore-F1=78.37
+    PCR-2 BERTScore-F1=77.47
+  Saved: results/Evaluation/per_model/ecqa_mistral_eval.csv
+
+  Model: falcon
+  [ecqa-falcon-Init-NLE] 1655 items | B1=12.52 B4=1.71 RL=18.77
+  [ecqa-falcon-SR-NLE] 1655 items | B1=17.55 B4=1.89 RL=17.62
+  [ecqa-falcon-PCR-1] 1655 items | B1=15.76 B4=1.65 RL=17.34
+  [ecqa-falcon-PCR-2] 1655 items | B1=17.03 B4=1.94 RL=17.86
+  Computing BERTScore for ecqa-falcon...
+    Init-NLE BERTScore-F1=77.87
+    SR-NLE BERTScore-F1=76.86
+    PCR-1 BERTScore-F1=76.93
+    PCR-2 BERTScore-F1=76.94
+  Saved: results/Evaluation/per_model/ecqa_falcon_eval.csv
+
+  Model: llama
+  [ecqa-llama-Init-NLE] 1485 items | B1=20.8 B4=2.65 RL=19.43
+  [ecqa-llama-SR-NLE] 1485 items | B1=17.21 B4=2.01 RL=17.53
+  [ecqa-llama-PCR-1] 1485 items | B1=15.76 B4=1.76 RL=16.58
+  [ecqa-llama-PCR-2] 1485 items | B1=14.07 B4=1.56 RL=15.58
+  Computing BERTScore for ecqa-llama...
+    Init-NLE BERTScore-F1=77.71
+    SR-NLE BERTScore-F1=76.84
+    PCR-1 BERTScore-F1=76.72
+    PCR-2 BERTScore-F1=76.3
+  Saved: results/Evaluation/per_model/ecqa_llama_eval.csv
+  Saved macro avg: results/Evaluation/macro_avg/ecqa_macro_avg.csv
+
+==================================================
+DATASET: ESNLI
+==================================================
+
+  Model: qwen
+  [esnli-qwen-Init-NLE] 1715 items | B1=13.37 B4=2.35 RL=19.79
+  [esnli-qwen-SR-NLE] 1715 items | B1=11.56 B4=2.1 RL=17.71
+  [esnli-qwen-PCR-1] 1715 items | B1=11.78 B4=2.19 RL=17.6
+  [esnli-qwen-PCR-2] 1715 items | B1=6.33 B4=1.59 RL=11.13
+  Computing BERTScore for esnli-qwen...
+    Init-NLE BERTScore-F1=76.0
+    SR-NLE BERTScore-F1=75.58
+    PCR-1 BERTScore-F1=75.33
+    PCR-2 BERTScore-F1=73.42
+  Saved: results/Evaluation/per_model/esnli_qwen_eval.csv
+
+  Model: mistral
+  [esnli-mistral-Init-NLE] 1530 items | B1=14.59 B4=3.0 RL=21.64
+  [esnli-mistral-SR-NLE] 1530 items | B1=8.6 B4=1.61 RL=14.05
+  [esnli-mistral-PCR-1] 1530 items | B1=7.02 B4=1.61 RL=12.22
+  [esnli-mistral-PCR-2] 1530 items | B1=5.46 B4=1.31 RL=9.83
+  Computing BERTScore for esnli-mistral...
+    Init-NLE BERTScore-F1=77.46
+    SR-NLE BERTScore-F1=74.99
+    PCR-1 BERTScore-F1=74.32
+    PCR-2 BERTScore-F1=73.42
+  Saved: results/Evaluation/per_model/esnli_mistral_eval.csv
+
+  Model: falcon
+  [esnli-falcon-Init-NLE] 1459 items | B1=16.91 B4=3.86 RL=24.16
+  [esnli-falcon-SR-NLE] 1459 items | B1=9.46 B4=1.91 RL=15.38
+  [esnli-falcon-PCR-1] 1459 items | B1=8.46 B4=1.81 RL=13.65
+  [esnli-falcon-PCR-2] 1459 items | B1=6.71 B4=1.31 RL=11.52
+  Computing BERTScore for esnli-falcon...
+    Init-NLE BERTScore-F1=77.89
+    SR-NLE BERTScore-F1=74.98
+    PCR-1 BERTScore-F1=73.78
+    PCR-2 BERTScore-F1=73.07
+  Saved: results/Evaluation/per_model/esnli_falcon_eval.csv
+
+  Model: llama
+  [esnli-llama-Init-NLE] 1304 items | B1=11.68 B4=2.41 RL=18.12
+  [esnli-llama-SR-NLE] 1304 items | B1=7.95 B4=1.58 RL=13.33
+  [esnli-llama-PCR-1] 1304 items | B1=5.97 B4=1.25 RL=10.38
+  [esnli-llama-PCR-2] 1304 items | B1=4.97 B4=1.02 RL=8.89
+  Computing BERTScore for esnli-llama...
+    Init-NLE BERTScore-F1=76.04
+    SR-NLE BERTScore-F1=74.37
+    PCR-1 BERTScore-F1=73.6
+    PCR-2 BERTScore-F1=72.71
+  Saved: results/Evaluation/per_model/esnli_llama_eval.csv
+  Saved macro avg: results/Evaluation/macro_avg/esnli_macro_avg.csv
+
+Main paper table saved: results/Evaluation/main_paper_table.csv
+
+Done! All evaluation files saved in results/Evaluation/
