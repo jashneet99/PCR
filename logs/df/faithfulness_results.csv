@@ -1,5 +1,9 @@
 Dataset,Model,Stage,Iter,Type,Total,Valid,Faith,Unfaith,Faith Rate,Unfaith Rate,Lengths
-comve,qwen,init,-,gd,235,235,66,169,0.2809,0.7191,24.217
-comve,qwen,refined,0,nl,235,235,78,157,0.3319,0.6681,33.1404
-comve,qwen,refined,1,nl,235,235,85,150,0.3617,0.6383,39.0936
-comve,qwen,refined,2,nl,235,235,86,149,0.366,0.634,42.9064
+comve,qwen,init,-,gd,217,217,64,153,0.2949,0.7051,23.9078
+comve,qwen,refined,0,nl,217,217,69,148,0.318,0.682,28.8756
+comve,qwen,refined,1,nl,217,217,69,148,0.318,0.682,32.3088
+comve,qwen,refined,2,nl,217,217,69,148,0.318,0.682,34.977
+ecqa,qwen,init,-,gd,1558,1558,870,688,0.5584,0.4416,22.2882
+ecqa,qwen,refined,0,nl,1558,1558,905,653,0.5809,0.4191,32.1444
+ecqa,qwen,refined,1,nl,1558,1558,930,628,0.5969,0.4031,38.7574
+ecqa,qwen,refined,2,nl,1558,1558,945,613,0.6065,0.3935,43.4692

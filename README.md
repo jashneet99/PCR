@@ -112,11 +112,3 @@ python src/evaluation/faithfulness.py
 
 If you find this work is helpful to your research, please consider citing our paper:
 
-```bibtex
-@article{wang2025self,
-  title={Self-Critique and Refinement for Faithful Natural Language Explanations},
-  author={Wang, Yingming and Atanasova, Pepa},
-  journal={arXiv preprint arXiv:2505.22823},
-  year={2025}
-}
-```

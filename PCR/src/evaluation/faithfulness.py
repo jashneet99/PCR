@@ -21,7 +21,10 @@ def evaluate_phase1(data_path: str):
     with open(data_path, 'r', encoding='utf-8') as f:
         data = json.load(f)
 
-    total = len(data)
+    total = sum(
+        1 for item in data
+        if item['pcr_phase1']['y'] != item['pcr_phase1']['y_prime']
+    )
 
     base_faith = sum(
         1 for item in data
@@ -52,7 +55,10 @@ def evaluate_phase2(data_path: str):
     with open(data_path, 'r', encoding='utf-8') as f:
         data = json.load(f)
 
-    total = len(data)
+    total = sum(
+        1 for item in data
+        if item['pcr_phase2']['y'] != item['pcr_phase2']['y_prime']
+    )
 
     base_faith = sum(
         1 for item in data

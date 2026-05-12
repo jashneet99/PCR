@@ -15,10 +15,10 @@ rouge_scorer = rouge_scorer_lib.RougeScorer(['rougeL'], use_stemmer=True)
 smoother = SmoothingFunction().method1
 
 
+# Load gold explanations from the original data file (for items where they weren't provided in the model output files).
 def load_gold(dataset):
     data = json.load(open(f'data/counterfactual/{dataset}/gen_final.json'))
     return {item['idx']: item['gold_explanation'] for item in data}
-
 
 def load_stage(dataset, model, stage, gold):
     """Returns list of (hypothesis, gold_explanation) tuples — all items, no dedup."""
